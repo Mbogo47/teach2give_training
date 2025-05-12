@@ -1,0 +1,41 @@
+1.You don’t pay engineers to write code, you pay them to understand subtleties and edges of the problem. The code is incidental-dozba cruiz
+
+2.Testing leads to failure, and failure leads to understanding-Burt Rutan
+
+3.The art of debugging is figuring out what you really told your program to do rather than what you thought you told it to do-Andrew Singer
+
+4.The function of good software is to make the complex appear to be simple-
+Grady Booch
+
+5.Scope doesn’t creep, understanding grows-jeffpatton
+
+6.We make, not to have, but to know-Alan Kay
+
+7.Configuration is coding in a poorly designed programming language without tests, version control, or documentation-Gregor Hohpe
+
+8.It’s the developers misunderstanding, not the expert knowledge, that gets released in production-ziobrando
+
+9.Never deploy to production on friday-stella stephanie
+
+10.The most dangerous phrase in the language is, ‘We’ve always done it this way – Grace Hopper
+
+11.Programming isn’t about what you know; it’s about what you can figure out – Chris Pine
+
+12.Code is read much more often than it is written. – Guido Van Rossum
+
+13.You might not think that programmers are artists, but programming is an extremely creative profession. It’s logic-based creativity. – John Romero
+
+14.The code you write makes you a programmer. The code you delete makes you a good one. The code you don’t have to write makes you a great one. – Mario Fusco
+
+15.Code is like humor. When you have to explain it, it’s bad.” – Cory House
+
+16.The more I study, the more insatiable do I feel my genius for it to be.” – Ada Lovelace
+
+17.Learning to write programs stretches your mind, and helps you think better, creates a way of thinking about things that I think is helpful in all domains.” – Bill Gates
+
+18.In the beginner’s mind, there are many possibilities; in the expert’s mind, there are few.” – Shunryu Suzuki
+
+19.Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+
+20.The function of good software is to make the complex appear to be simple.” – Grady Booch
+

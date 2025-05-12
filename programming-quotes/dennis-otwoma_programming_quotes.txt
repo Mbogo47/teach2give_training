@@ -1,0 +1,9 @@
+1. Don't comment bad code - rewrite it - Brian Kernighan
+
+2. Bad programmers worry about code. Good programmers worry about data structures used - Linux Torvalds
+
+3. lsdkfldskf dslfkssl sldfjs - slfjsldfkjsl
+
+4. sldfkjsldfk sk dflsdfks  - alsjdflasdkk
+
+5. it works on my machine, well, lets ship your machine - Amon Victor

@@ -1,0 +1,59 @@
+#20 programming quotes that can motivate a developer to keep pushing on 
+ despite the sleepless nights
+
+1. Programming is like sex: one mistake and you have to support it for
+   the rest of your life. by Michael Sinz
+
+2. Design and programming are human activities; forget that and all is lost.
+   by Bjarne Stroustrup
+
+3. Premature optimization is the root of all evil in programming.
+   by C. A. R. Hoare
+
+4. Programming languages should be designed not by piling feature on top of 
+   feature, but by removing the weaknesses and restrictions that make 
+   additional features appear necessary. by Anonymous
+
+5. First do it, then do it right, then do it fast. by Addy Osmani
+
+6. At any particular point in time, the features provided by our programming 
+   languages reflect our understanding of software and programming.
+   by R. E. Fairley
+
+7. Good programming is good writing. by John Shore
+
+8. Optimism is an occupational hazard of programming: feedback is the 
+   treament. by Kent Beck
+
+9. For the time being, programming is a consumer job, assembly line coding 
+   is the norm, and what little exciting stuff is being performed is not 
+   going to make it compared to the mass-marketed cräp sold by those who 
+   think they can surf on the previous half-century's worth of inventions 
+   forever. by Eric Naggum
+10. Documentation is the castor oil of programming. by Gerald M. Weinberg
+
+11. There is nothing in the programming field more despicable than an 
+undocumented program. by Ed Yourdon
+
+12. The sooner you start to code, the longer the program will take.
+    by Roy Carlson
+
+13. Programming is similar to a game of golf. The point is not getting the 
+    ball in the hole but how many strokes it takes. by Harlan D. Mills
+
+14. The amateur software engineer is always in search of magic. by Grady Booch
+
+15. Object-oriented programming is an exceptionally bad idea which could 
+    only have originated in California. by Edsger Dijkstra
+16. In programming, the hard part isn't solving problems, but deciding what
+    problems to solve. by Paul Graham
+
+17. Controlling complexity is the essence of computer programming. 
+    by Brian Wilson Kernighan
+
+18. If debugging is the process of removing bugs. Then programming must be 
+    the process of putting them in. by Edsger Dijkstra
+
+19. First, solve the problem. Then, write the code. by John Johnson
+
+20. Good programming is 99% sweat and 1% coffee. by Anonymous

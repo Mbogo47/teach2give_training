@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>BLOG</title>
+  </head>
+  <body>
+    <h1>Everyday Git</h1>
+
+    <!-- INTRODUCTION -->
+    <div>
+
+      <h2>What is Git</h2>
+
+      <p>
+        Git is a <em>version control system (VCS)</em> that allows
+        developers to track changes in their codebase, collaborate with others,
+        and maintain a history of their project.
+       </p>
+
+       <p>
+        A  <strong>version control system </strong>is a
+        tool that records changes to files over time so that specific versions
+        can be recalled later. This is especially helpful when working in teams,
+        as it provides the ability to manage contributions without overwriting
+        each other's work. 
+      </p>
+
+      <p>Other popular version control systems include: 
+        <ul>
+          <li>Subversion (SVN)</li>
+          <li>Mercurial</li>
+          <li>Bazaar</li>
+        </ul>
+      </p>
+
+      <p>However, this blog will
+        focus on <strong>Git</strong>, and we’ll also touch on <strong>GitHub</strong>, a popular hosting
+        platform for Git repositories.</p>
+
+    </div>
+
+    <!-- INSTALLATION -->
+    <div>
+
+      <h2>Installing Git</h2>
+
+      <p>To check whether Git is already installed on your machine, open a terminal or command prompt and type:
+      </p>
+
+      <figure>
+        <img src="./images/git_version.PNG" width="600px" alt="terminal command for Checking if Git is installed on the system.">
+        <figcaption>Checking if Git is installed on the system.</figcaption>
+      </figure>
+
+      <p>If Git is not installed, you can download and install it from the <a href="https://git-scm.com/" target="_blank">git website</a>. Installation steps vary by operating system.</p>
+    
+    </div>
+
+    <!-- CONFIGURING GIT -->
+    <div>
+
+      <h2>Configuring Git</h2>
+
+      <p>After installing Git, configure your identity with the following commands:</p>
+
+      <figure>
+        <img src="./images/git_config.PNG" width="600px" alt="Terminal commands for  Configuring Git with username and email">
+        <figcaption>Configuring Git with username and email</figcaption>
+      </figure>
+
+    </div>
+
+    <!-- INITIALIZING GIT -->
+    <div>
+
+      <h2>Intializing a Git repository</h2>
+
+      <p>A <em>Git repository</em> is a storage space where your project history is tracked. To initialize a Git repository in your project directory:</p>
+      
+      <figure>
+        <img src="./images/git_init.PNG" width="600px" alt="Terminal command for Initializing a new Git repository.">
+        <figcaption>Initializing a new Git repository.</figcaption>
+      </figure>
+
+      <p>This command creates a <strong><em>.git </em></strong> folder that contains all the information Git needs to track the project.</p>
+    
+    </div>
+
+    <!-- STAGING THE FILES -->
+    <div>
+
+      <h2>Adding files to the staging area</h2>
+
+      <p>The <em>staging area</em> is where Git gathers changes that will go into your next commit. To add files:</p>
+      
+      <figure>
+        <img src="./images/git_add 1.PNG" width="600px" alt="Adding files to the staging area">
+        <figcaption> Adding files to the staging area</figcaption>
+      </figure>
+
+      <figure>
+        <img src="./images/git_add 2.PNG" width="600px" alt="Adding files to the staging area">
+        <figcaption> Adding files to the staging area</figcaption>
+      </figure>
+      
+      <p><em>Tracked files</em> are those Git is monitoring, while <em>untracked files</em> have not yet been added to version control.<em></em></p>
+    
+    </div>
+
+    <!-- COMMITING CHANGES -->
+    <div>
+
+      <h2>Commiting changes</h2>
+
+      <div>
+      <p>To save the staged changes to your Git repository:</p>
+      <figure>
+        <img src="./images/git_commit.PNG" width="600px" alt="Making a commit with a message.">
+        <figcaption>Making a commit with a message.</figcaption>
+      </figure>
+    </div>
+
+    <div>
+      <p>To view commit history</p>
+      <figure>
+        <img src="./images/git_log.PNG" width="600px" alt="View commit history">
+        <figcaption>View commit history</figcaption>
+      </figure>
+    </div>
+
+    <div>
+      <p>To go back to a specific commit:</p>
+      <figure>
+        <img src="./images/git_hash.PNG" width="600px" alt="View specific commit">
+        <figcaption>View specific commit</figcaption>
+      </figure>
+    </div>
+
+    <div>
+      <p> <strong>Tips for good commit messages:</strong></p>
+      <ul>
+        <li>Be concise but descriptive</li>
+        <li>Answer the question "<em>This commit will:</em>"</li>
+      </ul>
+    </div>
+
+    </div>
+
+    <!-- BRANCHES  -->
+    <div>
+
+      <h2>Branches</h2>
+
+      <p>Branches allow you to work on different versions of a project simultaneously. They're especially useful when working on new features or bug fixes without affecting the main codebase.</p>
+
+      <ul>
+
+        <li>
+          <h3>Creating a branch</h3>
+
+          <p>To create a new branch:</p>
+          <figure>
+            <img src="./images/git_branch.PNG" width="600px" alt=" Creating a new branch">
+            <figcaption> Creating a new branch</figcaption>
+          </figure>
+
+        </li>
+
+        <li>
+          <h3>Viewing all branches</h3>
+
+          <p>To see all branches in the repository</p>
+          <figure>
+            <img src="./images/" width="600px" alt=" Viewing all branches.">
+            <figcaption> Viewing all branches. The active branch is marked with an asterisk.
+            </figcaption>
+          </figure>
+
+        </li>
+
+         <li>
+          <h3>Switching active branches</h3>
+
+          <p>To switch to another branch:</p>
+          <figure>
+            <img src="./images/git_switch.PNG" width="600px" alt=" Switching to a different branch">
+            <figcaption> Switching to a different branch</figcaption>
+          </figure>
+
+        </li>
+
+         <li>
+          <h3>Merging a branch</h3>
+
+          <p> We merge a branch to incorporate things we've done in our branch/branches into another branch (destination branch)..</figcaption>
+          </figure></p>
+          <figure>
+            <img src="./images/git_merge.PNG" width="600px" alt="Merging a branch into the current branch.">
+            <figcaption>To merge a branch into the active branch:
+            </figcaption>
+            </figure>
+
+        </li>
+
+         <li>
+          <h3>Deleting a branch</h3>
+          
+          <p>After merging, you may delete the branch:</p>
+          <figure>
+            <img src="./images/git_delete.PNG" width="600px" alt="Deleting a branch after merging">
+            <figcaption>Deleting a branch after merging</figcaption>
+          </figure>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div>
+      <div>
+        <h2>Github</h2>
+        <p>GitHub is a <em>hosting platform </em> for git repositories.</p>
+        <p>There are tons of competing tools that provide similar hosting and collaboration features including <em>GitLab, BitBucket</em> etc. </p>
+        <h3>Why Use GitHub</h3>
+
+        <ul>
+          <li><strong>Collaboration</strong> - GitHub makes it easier to work on a project with other people.</li>
+          <li><strong>Open source projects</strong>  - GitHub is the home of open source projects on the internet. Projects such as React, Postgresql, tensorflow et.c are hosted on GitHub, if you plan to contribute to open source, knowledge of GitHub is essential.
+          </li>
+          <li><strong>Exposure</strong> - your GitHub profile showcases your own projects and contributions to other projects. It can act as a resume that employers will consult when they want to hire you.
+          </li>
+          <li><strong>Stay up to date</strong>- being active on GitHub is the best way to stay up to date with trends in your favorite language or framework or tool.
+          </li>
+        </ul>
+
+      </div>
+      <div>
+        <h2>Getting your project to GitHub</h2>
+        <ol>
+          <li><h3>Creating a GitHub account</h3></li>
+          <p>To acess github, you need to register for an account by visiting <a href="https://github.com/ ">Github</a> and supply your email address and pick your username.</p>
+
+          <li><h3>Start from scratch</h3></li>
+          <ul>
+            <li>Create a brand-new repository on GitHub.</li>
+
+            <li>Clone it down to your machine.</li>
+              
+            <li>Do some work locally on this repository.</li>
+              
+            <li>Push your changes to GitHub.</li>
+          </ul>
+
+          <li>
+            <h3>Existing repo in our machine</h3>
+            <ul>
+              <li>Create a new repository in GitHub.</li>
+
+              <li>Connect our local repository</li>
+                
+              <li>Push our changes to GitHub.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      
+    </div>
+
+    <div>
+      <h2>Next steps</h2>
+      <p>Now that you’ve mastered Git basics, here are some suggestions for your next steps:</p>
+      <ul>
+        <li>Explore advanced Git concepts like <em>rebase, cherry-pick, and stash.</em> </li>
+        <li>Set up a Git workflow for team collaboration (e.g., Git Flow or GitHub Flow).</li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+1. "Hello World!"
+Author: Tradition (First appeared in Brian Kernighan & Dennis Ritchie's 1972 C programming book)
+Why it’s cheesy: The universal first line of code for beginners.
+
+2. "Real programmers count from 0."
+Author: Steve McConnell ("Code Complete")
+Why it’s cheesy: A nod to zero-based indexing struggles.
+
+3. "Programming is 10% writing code and 90% understanding why it’s not working."
+Author: Anonymous
+Why it’s cheesy: Every developer’s existential crisis.
+
+4. "There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors."
+Author: Phil Karlton (with later adaptations)
+Why it’s cheesy: A self-aware joke about the original "two hard things" quote.
+
+5. "If debugging is the process of removing bugs, then programming must be the process of putting them in."
+Author: Edsger W. Dijkstra
+Why it’s cheesy: A legendary CS figure roasting his own field.
+
+6. "Why do programmers prefer dark mode? Because light attracts bugs!"
+Author: Anonymous
+Why it’s cheesy: Pun-based programmer humor.
+
+7. "A user interface is like a joke. If you have to explain it, it’s not that good."
+Author: Martin Leblanc
+Why it’s cheesy: UX wisdom wrapped in a dad joke.
+
+8. "I’m not a great programmer; I’m just a good programmer with great habits."
+Author: Kent Beck (pioneer of Extreme Programming)
+Why it’s cheesy: Humblebrag for clean-code enthusiasts.
+
+9. "Programming is like sex: One mistake and you have to support it for the rest of your life."
+Author: Michael Sinz
+Why it’s cheesy: Cringe-worthy but relatable analogy.
+
+10. "Why do Java developers wear glasses? Because they can’t C#!"
+Author: Anonymous
+Why it’s cheesy: Pun-based rivalry between programming languages.
+
+11. "Talk is cheap. Show me the code." – Linus Torvalds
+
+12. "There are 10 types of people: those who understand binary and those who don’t." – Anonymous
+
+13. "I don’t always test my code, but when I do, I do it in production." – Anonymous
+
+14. "If at first you don’t succeed, call it version 1.0." – Anonymous
+
+15. "To understand recursion, you must first understand recursion." – Anonymous
+
+16. "C makes it easy to shoot yourself in the foot; C++ makes it harder, but when you do, it blows away your whole leg." – Bjarne Stroustrup
+
+17. "There is no place like 127.0.0.1." – Anonymous
+
+18. "I’m not arguing, I’m just explaining why I’m right." – Anonymous (Programmer’s Mantra)
+
+19. "The best thing about a boolean is even if you’re wrong, you’re only off by a bit." – Anonymous
+
+20. "Debugging: Being the detective in a crime movie where you’re also the murderer." – Anonymous
