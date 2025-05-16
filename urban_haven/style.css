@@ -1,0 +1,30 @@
+:root{
+  --color-primary: #9F84BD;
+  --color-primary-light: #C09BD8;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-white-light: #EDE3E9;
+  --color-white-dark: #E6E4CE;
+  --font-family: "Nunito", sans-serif;
+  --font-cursive: "Playwrite HU", cursive;
+  --font-sans: "Manrope", sans-serif;
+}
+
+*{ 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  transition: all .2s ease-out;
+  text-decoration: none;
+}
+
+html{
+  font-size: 62.5%;
+
+}
+body{
+ font-size: 1.6rem;
+ font-family: var(--font-family);
+}
