@@ -95,6 +95,16 @@ section {
 
 /* END OF HEADER STYLINGS */
 
+/* REUSABLE TITLE STYLING*/
+.section-title {
+  text-align: center;
+  font-size: 6rem;
+  color: var(--color-primary);
+  font-family: var(--font-cursive);
+  margin-bottom: 2rem;
+}
+/* END OF REUSABLE TITLE STYLING */
+
 /* HERO STYLINGS */
 
 .hero-section {
@@ -147,17 +157,71 @@ section {
 
 /* END OF HERO STYLINGS */
 
+/* LISTING SECTION STYLING */
+.listing-section{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.listing{
+  display: flex;
+  gap: 5rem;
+  background-color: var(--color-white-dark);
+  border-radius: 5px;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.listing .img-wrapper{
+  width: 50%;
+}
+
+
+.listing .img-wrapper img{
+  border-radius: 5px;
+}
+
+.listing-description{
+ width: 50%;
+}
+
+@media screen and (max-width: 62.5em) {
+  .listing{
+    flex-direction: column;
+  }
+
+  .listing .img-wrapper{
+    width: 100%;
+  }
+
+  .listing-description{
+    width: 100%;
+   }
+}
+
+.listing-description p:first-child{
+  margin: 1.5rem;
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--color-primary);
+}
+
+.listing-description p:last-child{
+  text-align: center;
+  font-size: 2.7rem;
+}
+
+@media screen and (max-width: 31.25em){
+  .listing-description p:last-child{
+    font-size: 1.8rem;
+  }
+}
+/* END OF LISTING SECTION STYLING */
+
 /* AMENITY SECTION STYLINGS */
 .amenities-section {
   background-color: var(--color-white-dark);
-}
-
-.amenities-title {
-  text-align: center;
-  font-size: 6rem;
-  color: var(--color-primary);
-  font-family: var(--font-cursive);
-  margin-bottom: 2rem;
 }
 
 .amenities {
