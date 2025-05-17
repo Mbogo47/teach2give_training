@@ -157,30 +157,46 @@ section {
   font-size: 6rem;
   color: var(--color-primary);
   font-family: var(--font-cursive);
+  margin-bottom: 2rem;
 }
 
-.amenities-list {
-  list-style: none;
+.amenities {
   display: flex;
-  gap: 5rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-.amenities-list-item {
+.amenities-container {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: var(--color-white);
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.45);
   width: 25rem;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 
-.amenities-list-item img {
-  width: 8rem;
+.img-wrapper {
+  width: 10rem;
   margin: 0 auto;
-  border: 2px solid;
 }
 
-.amenities-list-item span {
-  justify-content: center;
+.img-wrapper img {
+  width: 100%;
 }
+
+.amenity-name {
+  margin: 1rem 0;
+  text-transform: capitalize;
+  font-weight: 900;
+  color: var(--color-primary-light);
+  text-align: center;
+}
+
+.amenity-description {
+  font-size: 1.7rem;
+  font-weight: 600;
+  text-align: center;
+  text-wrap: wrap;
+}
+
 /* END OF AMENITY SECTION STYLINGS */
