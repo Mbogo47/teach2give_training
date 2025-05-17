@@ -6,7 +6,7 @@
   --color-white-light: #ede3e9;
   --color-white-dark: #e6e4ce;
   --font-family: "Nunito", sans-serif;
-  --font-cursive: "Kaushan Script", cursive;;
+  --font-cursive: "Kaushan Script", cursive;
   --font-sans: "Manrope", sans-serif;
 }
 
@@ -148,18 +148,18 @@ section {
 /* END OF HERO STYLINGS */
 
 /* AMENITY SECTION STYLINGS */
-.amenities-section{
+.amenities-section {
   background-color: var(--color-white-dark);
 }
 
-.amenities-title{
+.amenities-title {
   text-align: center;
   font-size: 6rem;
   color: var(--color-primary);
   font-family: var(--font-cursive);
 }
 
-.amenities-list{
+.amenities-list {
   list-style: none;
   display: flex;
   gap: 5rem;
@@ -167,7 +167,7 @@ section {
   justify-content: center;
 }
 
-.amenities-list-item{
+.amenities-list-item {
   width: 25rem;
   display: flex;
   justify-content: center;
@@ -180,7 +180,7 @@ section {
   border: 2px solid;
 }
 
-.amenities-list-item span{
+.amenities-list-item span {
   justify-content: center;
 }
 /* END OF AMENITY SECTION STYLINGS */
