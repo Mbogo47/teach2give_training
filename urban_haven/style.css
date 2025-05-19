@@ -380,3 +380,44 @@ section {
 }
 
 /* END OF CONTACT SECTION STYLINGS */
+
+/*FOOTER STYLINGS*/
+.footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white-dark);
+}
+
+.footer h3{
+  font-size: 4.5rem;
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+}
+
+
+.footer .social-icons a{
+  color: var(--color-primary);
+}
+
+.footer .social-icons i{
+  font-size: 7rem;
+  padding: 1.5rem;
+}
+
+.footer .social-icons i:hover{
+  color: var(--color-primary-light);
+  transition: .4s ease-in;
+  transform: rotate(358deg);
+}
+
+.footer p{
+  font-size: 3rem;
+}
+
+.footer p a{
+  color: var(--color-primary);
+}
+
+/* END OF FOOTER STYLINGS */
