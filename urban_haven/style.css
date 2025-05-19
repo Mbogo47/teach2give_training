@@ -4,10 +4,12 @@
   --color-white: #fff;
   --color-black: #000;
   --color-white-light: #ede3e9;
-  --color-white-dark: #e6e4ce;
+  /* --color-white-dark: #e6e4ce; */
+  --color-white-dark: whitesmoke;
   --font-family: "Nunito", sans-serif;
   --font-cursive: "Kaushan Script", cursive;
   --font-sans: "Manrope", sans-serif;
+  --box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.45);
 }
 
 * {
@@ -103,6 +105,7 @@ section {
   font-family: var(--font-cursive);
   margin-bottom: 2rem;
 }
+
 /* END OF REUSABLE TITLE STYLING */
 
 /* HERO STYLINGS */
@@ -158,13 +161,13 @@ section {
 /* END OF HERO STYLINGS */
 
 /* LISTING SECTION STYLING */
-.listing-section{
+.listing-section {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.listing{
+.listing {
   display: flex;
   gap: 5rem;
   background-color: var(--color-white-dark);
@@ -173,50 +176,50 @@ section {
   padding: 2rem;
 }
 
-.listing .img-wrapper{
-  width: 50%;
+.listing .img-wrapper {
+  width: 60%;
 }
 
-
-.listing .img-wrapper img{
+.listing .img-wrapper img {
   border-radius: 5px;
 }
 
-.listing-description{
- width: 50%;
+.listing-description {
+  width: 30%;
 }
 
 @media screen and (max-width: 62.5em) {
-  .listing{
+  .listing {
     flex-direction: column;
   }
 
-  .listing .img-wrapper{
+  .listing .img-wrapper {
     width: 100%;
   }
 
-  .listing-description{
+  .listing-description {
     width: 100%;
-   }
+  }
 }
 
-.listing-description p:first-child{
+.listing-description p:first-child {
   margin: 1.5rem;
   text-align: center;
   font-size: 2.5rem;
   color: var(--color-primary);
 }
 
-.listing-description p:last-child{
+.listing-description p:last-child {
   text-align: center;
   font-size: 2.7rem;
 }
 
-@media screen and (max-width: 31.25em){
-  .listing-description p:last-child{
+@media screen and (max-width: 31.25em) {
+  .listing-description p:last-child {
     font-size: 1.8rem;
   }
 }
+
 /* END OF LISTING SECTION STYLING */
 
 /* AMENITY SECTION STYLINGS */
@@ -235,7 +238,7 @@ section {
   padding: 2rem;
   background-color: var(--color-white);
   border-radius: 5px;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--box-shadow);
   width: 25rem;
 }
 
@@ -264,3 +267,116 @@ section {
 }
 
 /* END OF AMENITY SECTION STYLINGS */
+
+/* CONTACT US SECTION STYLINGS */
+
+.contact-info-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.contact-info-container-item {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: var(--color-white-dark);
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  width: 30rem;
+  text-align: center;
+  text-wrap: wrap;
+}
+
+.contact-info-container-item i {
+  font-size: 6rem;
+  color: var(--color-primary);
+}
+
+.contact-info-container-item h4 {
+  font-size: 3rem;
+}
+
+.contact-info-container-item p {
+  font-size: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  gap: 3rem;
+  justify-content: space-evenly;
+}
+
+.contact-img {
+  width: 45%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 45%;
+  border-radius: 5px;
+}
+
+.contact-form form h3 {
+  color: var(--color-primary);
+  font-size: 3rem;
+  padding: 2rem;
+}
+
+.contact-form form input,
+.contact-form form textarea {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  padding: 1rem 3rem;
+  font-size: 1.6rem;
+  text-transform: none;
+  margin: 0.7rem 2rem;
+}
+
+.contact-form form input::placeholder,
+.contact-form form textarea::placeholder {
+  font-size: 1.7rem;
+  text-transform: capitalize;
+  color: var(--color-primary-light);
+  font-weight: 500;
+}
+
+.contact-form form .btn {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 3px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  width: 40%;
+  margin: 0.7rem 2rem;
+  padding: 1rem 1.2rem;
+  font-size: 2rem;
+  text-wrap: wrap;
+}
+
+.contact-form form .btn:hover {
+  background-color: var(--color-primary-light);
+}
+
+@media screen and (max-width: 50em) {
+  .contact-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-form form {
+    width: 100%;
+  }
+
+  .contact-img {
+    width: 100%;
+  }
+}
+
+/* END OF CONTACT SECTION STYLINGS */
