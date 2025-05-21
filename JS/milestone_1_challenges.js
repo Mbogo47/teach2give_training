@@ -106,3 +106,16 @@ console.log(fizzBuzzCheck(3)); // "Fizz"
 console.log(fizzBuzzCheck(10)); // "Buzz"
 console.log(fizzBuzzCheck(15)); // "FizzBuzz"
 console.log(fizzBuzzCheck(7)); // "7"
+
+
+// CHALLENGE 10: PERIMETER 2
+const perimeter = (polygon, l) => { 
+    if (polygon == "s") {
+        return `${l * 4 }`
+    } else {
+        return `${6.28 * l}`
+    }
+}
+
+console.log(perimeter("s", 7)); //28
+console.log(perimeter("c", 4)); //25.12
