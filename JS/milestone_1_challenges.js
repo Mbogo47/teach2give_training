@@ -7,3 +7,8 @@ console.log(addition(-6, 9));
 const convert = (minutes) => minutes * 60;
 console.log(convert(5));
 console.log(convert(2));
+
+//CHALLENGE 3: Perimeter of a Rectangle
+const findPerimeter = (leng, width) => (leng + width) * 2;
+console.log(findPerimeter(6, 7));
+console.log(findPerimeter(20, 10));
