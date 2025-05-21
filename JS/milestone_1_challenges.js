@@ -135,3 +135,19 @@ const sumEvenNumbers = ( n ) => {
 console.log(sumEvenNumbers(6)); // 12  (2 + 4 + 6)
 console.log(sumEvenNumbers(10)); // 30  (2 + 4 + 6 + 8 + 10)
 console.log(sumEvenNumbers(5)); // 6   (2 + 4)
+
+// CHALLENGE 12: MULTIPLY BY ITSELF
+const powerUp = (num, times) => {
+    if (times == 0) {
+        return "1"
+    } else if(num === 0) { 
+        return "1"
+    } else {
+        return `${num ** times}`;
+    }
+}
+
+console.log(powerUp(2, 3)); // 8  (2 * 2 * 2)
+console.log(powerUp(5, 0)); // 1  (anything to the zero power is 1)
+console.log(powerUp(3, 4)); // 81 (3 * 3 * 3 * 3)
+console.log(powerUp(0)); // 1
