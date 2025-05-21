@@ -151,3 +151,23 @@ console.log(powerUp(2, 3)); // 8  (2 * 2 * 2)
 console.log(powerUp(5, 0)); // 1  (anything to the zero power is 1)
 console.log(powerUp(3, 4)); // 81 (3 * 3 * 3 * 3)
 console.log(powerUp(0)); // 1
+
+// CHALLENGE 13: FACTORIAL CALCULATOR
+const factorial = (n) => {
+    let fact = 1
+    if (n < 0) {
+        return "Number must be greater than 0"
+    } else if (n == 0) { 
+        return "1"
+    } else {
+        for (let i = 1; i <= n; i++) {
+            fact *= i
+        }
+        return `${fact}`;
+    }
+
+}
+
+console.log(factorial(0)); // 1
+console.log(factorial(4)); // 24  (1 * 2 * 3 * 4)
+console.log(factorial(6)); // 720 (1 * 2 * 3 * 4 * 5 * 6)
