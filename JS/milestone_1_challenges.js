@@ -12,3 +12,8 @@ console.log(convert(2));
 const findPerimeter = (leng, width) => (leng + width) * 2;
 console.log(findPerimeter(6, 7));
 console.log(findPerimeter(20, 10));
+
+// CHALLENGE 4: CHECK NEGATIVE
+const isNegative = (num) => num < 0;
+console.log(isNegative(-23));
+console.log(isNegative(55));
