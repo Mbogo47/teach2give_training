@@ -43,3 +43,26 @@ const findLargest = (a, b, c) => {
 console.log(findLargest(5, 9, 3));
 console.log(findLargest(10, 10, 10));
 console.log(findLargest(-1, -5, -3));
+
+// CHALLENGE 7 : BMI CALCULATOR
+const calculateBMI = (kg, meters) => {
+    if (kg / meters ** 2 < 18.5) {
+        let weight = Math.round((kg / meters ** 2) * 10) / 10;
+        return `Your weight is ${weight} - Underweight`;
+
+    } else if (kg / meters ** 2 > 18.5 && kg / meters ** 2 < 24.9) {
+        let weight = Math.round((kg / meters ** 2) * 10) / 10;
+        return `Your weight is ${weight} - Normal Weight`;
+
+    } else if (kg / meters ** 2 > 25 && kg / meters ** 2 < 29.9) {
+        let weight = Math.round((kg / meters ** 2) * 10) / 10;
+        return `Your weight is ${weight} - Overweight`;
+
+    } else {
+        let weight = Math.round((kg / meters ** 2) * 10) / 10;
+        return `Your weight is ${weight} - Obese`;
+    }
+};
+
+console.log(calculateBMI(68, 1.75));
+console.log(calculateBMI(85, 1.8));
