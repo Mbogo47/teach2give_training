@@ -171,3 +171,17 @@ const linearSearch = (arr, target) => {
 console.log(linearSearch([5, 3, 7, 1, 4], 7));
 console.log(linearSearch([5, 3, 7, 1, 4], 10));
 
+
+// Challenge 12 : Reverse Linear Search
+const reverseLinearSearch = (arr, target) => {
+  for (let i = arr.length - 1; i > 0; i--){
+    if (arr[i] == target) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+console.log(reverseLinearSearch([5, 3, 7, 1, 4, 7], 7));
+console.log(reverseLinearSearch([5, 3, 7, 1, 4], 10));
+
