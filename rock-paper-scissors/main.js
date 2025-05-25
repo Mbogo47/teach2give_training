@@ -7,8 +7,10 @@ let playerScore = 0;
 let computerScore = 0;
 
 // Initial state before any play
-handSections[0].textContent = "✋"; // Computer
-handSections[1].textContent = "✋"; // Player
+// Computer
+handSections[0].textContent = "✋"; 
+// Player
+handSections[1].textContent = "✋"; 
 winContainer.textContent = "Currently Draw";
 scoreBoard.textContent = `Computer ${computerScore} Player ${playerScore}`;
 
