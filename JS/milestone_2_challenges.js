@@ -229,3 +229,32 @@ const removeDuplicates = (arr) => {
 }
 
 console.log(removeDuplicates([1, 2, 3, 2, 4, 1, 5]));
+
+// Challenge 16 : Most Frequent
+const mostFrequent = (arr) => {
+  const frequency = {}
+  for (let i = 0; i < arr.length; i++) {
+    if (frequency[arr[i]]) {
+      frequency[arr[i]] += 1;
+    } else {
+      frequency[arr[i]] = 1;
+    }
+  }
+  
+  let maxCount = 0;
+  let mostFrequentItem = null;
+  for (let key in frequency) {
+    
+    if (frequency[key] > maxCount) {
+      maxCount = frequency[key];
+      mostFrequentItem = key;
+    }
+  }
+  return mostFrequentItem;
+}
+
+console.log(mostFrequent([1, 2, 2, 3, 3, 3, 4]))
+// returns: 3
+
+console.log(mostFrequent(["apple", "banana", "apple", "orange", "banana", "apple"]))
+// returns: "apple"
