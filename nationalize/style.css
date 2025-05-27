@@ -1,0 +1,30 @@
+:root {
+  --primary-color: #0B3142;
+  --secondary-color: #9C92A3;
+  --font: "Playpen Sans Deva", cursive;;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: var(--font-family);
+  text-transform: capitalize;
+  overflow: hidden;
+  display: flex;
+  place-items: center;
+}
+
+
