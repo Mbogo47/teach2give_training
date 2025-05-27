@@ -1,7 +1,8 @@
 :root {
   --primary-color: #0B3142;
   --secondary-color: #9C92A3;
-  --font: "Playpen Sans Deva", cursive;;
+  --font: "Playpen Sans Deva", cursive;
+
 }
 
 * {
@@ -15,16 +16,66 @@
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
-  overflow: hidden;
 }
 
 body {
   font-size: 1.6rem;
-  font-family: var(--font-family);
-  text-transform: capitalize;
-  overflow: hidden;
+  font-family: var(--font);
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  /* color: var(--primary-color); */
 }
 
+#app {
+  width: 100%;
+  max-width: 50rem;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+}
+
+h1 {
+  font-size: 2.4rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+}
+
+input {
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+}
+
+button {
+  padding: 1.2rem;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  align-self: center;
+  width: 50%;
+}
+
+#output {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  margin-top: 1rem;
+  text-align: center;
+  list-style-type: none;
+}
