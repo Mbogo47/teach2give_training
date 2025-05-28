@@ -4,9 +4,34 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cat facts/photos</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>The Cat App</title>
     <script type="module" src="/main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <form action="">
+      <div class="form-body">
+        <h1>the cats app</h1>
+        <div>
+          <p>number of cat facts (50 maximum)</p>
+          <input type="text" name="" id="fact-limit" />
+          <button type="button" class="facts-btn">submit</button>
+        </div>
+        <div>
+          <p>number of cat photos (10 max)</p>
+          <input type="text" name="" id="photo-limit" />
+          <button type="button" class="photos-btn">submit</button>
+        </div>
+      </div>
+      <div>
+        <p class="output"></p>
+      </div>
+    </form>
+  </body>
 </html>
