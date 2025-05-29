@@ -18,20 +18,36 @@
     <form action="">
       <div class="form-body">
         <h1>the cats app</h1>
-        <div>
-          <p>number of cat facts (50 maximum)</p>
-          <input type="text" name="" id="fact-limit" />
-          <button type="button" class="facts-btn">submit</button>
+        <div class="form-contents">
+          <div>
+            <p>number of cat facts (50 maximum)</p>
+            <div class="form-row">
+              <input
+                type="number"
+                id="fact-limit"
+                placeholder="number of cat facts (50 max)"
+              />
+              <button type="button" class="facts-btn">submit</button>
+            </div>
+          </div>
+          <div>
+            <p>number of cat photos (10 max)</p>
+            <div class="form-row">
+              <input
+                type="number"
+                id="photo-limit"
+                placeholder="number of cat photos (10 max)"
+              />
+              <button type="button" class="photos-btn">submit</button>
+            </div>
+          </div>
         </div>
-        <div>
-          <p>number of cat photos (10 max)</p>
-          <input type="text" name="" id="photo-limit" />
-          <button type="button" class="photos-btn">submit</button>
+        
         </div>
       </div>
-      <div>
-        <p class="output"></p>
-      </div>
+      <div class="loader" id="loader"></div>
+
+      <div class="output"></div>
     </form>
   </body>
 </html>
