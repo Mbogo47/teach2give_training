@@ -25,7 +25,8 @@ button.addEventListener('click', async (e) => {
         }
         const listItems = data.country.map(item => {
             const countryName = getCountryNames.of(item.country_id);
-            const probability = (item.probability * 100).toFixed(2);
+            const probability =Math.round(item.probability* 100) / 100;
+            
             return `<li>${countryName} - ${probability}%</li>`;
         });
         resultBox.innerHTML = `${inputedValue} is likely used in:<ul>${listItems.join('')}</ul>`;
