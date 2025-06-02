@@ -95,3 +95,15 @@ const differenceEvenOdd = (arr) => {
     return sumEven - sumOdd;
 };
 console.log(differenceEvenOdd([1, 2, 3, 4, 5, 6]));
+// Challenge 9:  Count Truthy
+const countTruthy = (obj) => {
+    let count = 0;
+    for (let key in obj) {
+        if (obj[key]) {
+            count++;
+        }
+    }
+    return count;
+};
+console.log(countTruthy({ a: 0, b: "hello", c: false, d: 42, e: null }));
+// returns: 2  // "hello" and 42 are truthy
