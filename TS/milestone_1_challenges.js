@@ -1,6 +1,6 @@
 // CHALLENGE 1: Return the Sum of Two Numbers
-var addition = function (num_1, num_2) {
-    return num_1 + num_2;
+var addition = function (num1, num2) {
+    return num1 + num2;
 };
 console.log(addition(3, 5));
 console.log(addition(-6, 9));
@@ -23,12 +23,12 @@ var isNegative = function (num) {
 console.log(isNegative(-23));
 console.log(isNegative(55));
 // CHALLENGE 5 : CAN I DRIVE
-var canDrive = function (p_name, age) {
+var canDrive = function (pName, age) {
     if (age > 18) {
-        return "".concat(p_name, " is old enough to drive");
+        return "".concat(pName, " is old enough to drive");
     }
     else {
-        return "".concat(p_name, " is not old enough to drive yet");
+        return "".concat(pName, " is not old enough to drive yet");
     }
 };
 console.log(canDrive("Jane", 22));
@@ -110,3 +110,25 @@ console.log(fizzBuzzCheck(3)); // "Fizz"
 console.log(fizzBuzzCheck(10)); // "Buzz"
 console.log(fizzBuzzCheck(15)); // "FizzBuzz"
 console.log(fizzBuzzCheck(7)); // "7"
+// CHALLENGE 10: PERIMETER 2
+var perimeter = function (polygon, l) {
+    if (polygon == "s") {
+        return "".concat(l * 4);
+    }
+    else {
+        return "".concat(6.28 * l);
+    }
+};
+console.log(perimeter("s", 7)); //28
+console.log(perimeter("c", 4)); //25.12
+// CHALLENGE 10: PERIMETER 2
+var perimeter2 = function (polygon, l) {
+    if (polygon == "s") {
+        return l * 4;
+    }
+    else {
+        return 6.28 * l;
+    }
+};
+console.log(perimeter("s", 7)); //28
+console.log(perimeter("c", 4)); //25.12
