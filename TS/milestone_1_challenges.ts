@@ -12,3 +12,11 @@ const convert = (minutes: number): number => {
 }
 console.log(convert(5));
 console.log(convert(2));
+
+
+//CHALLENGE 3: Perimeter of a Rectangle
+const findPerimeter = (leng: number, width: number): number => {
+    return (leng + width) * 2;
+}
+console.log(findPerimeter(6, 7));
+console.log(findPerimeter(20, 10));
