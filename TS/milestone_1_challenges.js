@@ -16,3 +16,9 @@ var findPerimeter = function (leng, width) {
 };
 console.log(findPerimeter(6, 7));
 console.log(findPerimeter(20, 10));
+// CHALLENGE 4: CHECK NEGATIVE
+var isNegative = function (num) {
+    return num < 0;
+};
+console.log(isNegative(-23));
+console.log(isNegative(55));
