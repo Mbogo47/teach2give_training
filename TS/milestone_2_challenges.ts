@@ -154,3 +154,16 @@ const average = (arr:number[]): number => {
 
 console.log(average([]));         
 console.log(average([2, 4, 6, 8])); 
+
+// Challenge 11: Linear Search
+const linearSearch = (arr: number[], target:number): number => {
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i] === target) {
+      return i
+    }
+  }
+  return -1
+}
+
+console.log(linearSearch([5, 3, 7, 1, 4], 7));
+console.log(linearSearch([5, 3, 7, 1, 4], 10));
