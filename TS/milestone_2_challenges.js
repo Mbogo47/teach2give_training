@@ -142,3 +142,15 @@ const reverseLinearSearch = (arr, target) => {
 };
 console.log(reverseLinearSearch([5, 3, 7, 1, 4, 7], 7));
 console.log(reverseLinearSearch([5, 3, 7, 1, 4], 10));
+// Challenge 13 : Linear Search All Indices
+const linearSearchAll = (arr, target) => {
+    const all = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === target) {
+            all.push(i);
+        }
+    }
+    return all;
+};
+console.log(linearSearchAll([5, 3, 7, 1, 4, 7], 7));
+console.log(linearSearchAll([5, 3, 7, 1, 4], 10)); // returns: [2, 5]
