@@ -91,3 +91,22 @@ var greetUser = function (user_name, hour) {
 };
 console.log(greetUser("Alice", 24));
 console.log(greetUser("Alice", 2));
+// CHALLENGE 9: FIZZBUZZ
+var fizzBuzzCheck = function (num) {
+    if (num % 3 === 0 && num % 5 === 0) {
+        return "FizzBuzz";
+    }
+    else if (num % 5 === 0) {
+        return "Buzz";
+    }
+    else if (num % 3 === 0) {
+        return "Fizz";
+    }
+    else {
+        return "".concat(num);
+    }
+};
+console.log(fizzBuzzCheck(3)); // "Fizz"
+console.log(fizzBuzzCheck(10)); // "Buzz"
+console.log(fizzBuzzCheck(15)); // "FizzBuzz"
+console.log(fizzBuzzCheck(7)); // "7"
