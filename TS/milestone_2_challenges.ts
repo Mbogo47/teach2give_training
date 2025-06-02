@@ -195,3 +195,18 @@ const linearSearchAll = (arr: number[], target:number) :number[]=> {
 console.log(linearSearchAll([5, 3, 7, 1, 4, 7], 7));
 console.log(linearSearchAll([5, 3, 7, 1, 4], 10)); // returns: [2, 5]
 
+// Challenge 14 : Count Occurrences
+const countOccurrences = (arr:string[]) : Record<string, number> => {
+  const occurrence :Record<string, number> = {}
+  for (let i = 0; i < arr.length; i++) {
+    if (occurrence[arr[i]]) {
+      occurrence[arr[i]] += 1;
+    } else {
+      occurrence[arr[i]] = 1;
+    }
+  }
+  return occurrence
+}
+
+console.log(countOccurrences(["apple", "banana", "apple", "orange", "banana", "apple"]))
+// returns: { apple: 3, banana: 2, orange: 1 }
