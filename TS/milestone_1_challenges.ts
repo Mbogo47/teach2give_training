@@ -140,3 +140,17 @@ const perimeter2 = (polygon: string, l:number) :number=> {
 
 console.log(perimeter("s", 7)); //28
 console.log(perimeter("c", 4)); //25.12
+// CHALLENGE 11 : SUM OF EVEN NUMBERS
+const sumEvenNumbers = ( n:number ): number => {
+    let total = 0
+    for (let i = 0; i <= n; i++){
+        if (i % 2 === 0) {
+            total += i      
+        }  
+    }
+    return total;
+}
+
+console.log(sumEvenNumbers(6)); // 12  (2 + 4 + 6)
+console.log(sumEvenNumbers(10)); // 30  (2 + 4 + 6 + 8 + 10)
+console.log(sumEvenNumbers(5)); // 6   (2 + 4)
