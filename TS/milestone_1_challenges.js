@@ -48,3 +48,24 @@ var findLargest = function (a, b, c) {
 console.log(findLargest(5, 9, 3));
 console.log(findLargest(10, 10, 10));
 console.log(findLargest(-1, -5, -3));
+// CHALLENGE 7 : BMI CALCULATOR
+var calculateBMI = function (kg, meters) {
+    if (kg / Math.pow(meters, 2) < 18.5) {
+        var weight = Math.round((kg / Math.pow(meters, 2)) * 10) / 10;
+        return "Your weight is ".concat(weight, " - Underweight");
+    }
+    else if (kg / Math.pow(meters, 2) > 18.5 && kg / Math.pow(meters, 2) < 24.9) {
+        var weight = Math.round((kg / Math.pow(meters, 2)) * 10) / 10;
+        return "Your weight is ".concat(weight, " - Normal Weight");
+    }
+    else if (kg / Math.pow(meters, 2) > 25 && kg / Math.pow(meters, 2) < 29.9) {
+        var weight = Math.round((kg / Math.pow(meters, 2)) * 10) / 10;
+        return "Your weight is ".concat(weight, " - Overweight");
+    }
+    else {
+        var weight = Math.round((kg / Math.pow(meters, 2)) * 10) / 10;
+        return "Your weight is ".concat(weight, " - Obese");
+    }
+};
+console.log(calculateBMI(68, 1.75));
+console.log(calculateBMI(85, 1.8));
