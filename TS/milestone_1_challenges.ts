@@ -39,4 +39,16 @@ const canDrive = (p_name: string, age:number) :string => {
 console.log(canDrive("Jane", 22));
 console.log(canDrive("June", 12));
 
-
+// CHALLENGE 6 : LARGEST NUMBER
+const findLargest = (a: number, b: number, c:number) :number=> {
+    if (a > b && a > c) {
+        return a;
+    } else if (b > a && b > c) {
+        return b;
+    } else {
+        return c;
+    }
+};
+console.log(findLargest(5, 9, 3));
+console.log(findLargest(10, 10, 10));
+console.log(findLargest(-1, -5, -3));
