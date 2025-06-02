@@ -28,5 +28,15 @@ const isNegative = (num: number): boolean => {
 console.log(isNegative(-23));
 console.log(isNegative(55));
 
+// CHALLENGE 5 : CAN I DRIVE
+const canDrive = (p_name: string, age:number) :string => {
+    if (age > 18) {
+        return `${p_name} is old enough to drive`;
+    } else {
+        return `${p_name} is not old enough to drive yet`;
+    }
+};
+console.log(canDrive("Jane", 22));
+console.log(canDrive("June", 12));
 
-  
+
