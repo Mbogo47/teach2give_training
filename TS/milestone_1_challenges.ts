@@ -204,3 +204,17 @@ const sumMultiples = (n: number, divisor:number) :number=> {
 console.log(sumMultiples(10, 2)); // 30  (2 + 4 + 6 + 8 + 10)
 console.log(sumMultiples(15, 3)); // 45  (3 + 6 + 9 + 12 + 15)
 console.log(sumMultiples(7, 5)); // 5
+
+// CHALLENGE 15: SUM OF DIGITS
+const sumDigits = (n:number) : number=> {
+    let  sum = 0
+    while (n > 0) {
+        sum += n % 10 
+        n = Math.trunc(n / 10);
+    }
+    return sum
+}
+
+console.log(sumDigits(123));   // 6   (1 + 2 + 3)
+console.log(sumDigits(4567));  // 22  (4 + 5 + 6 + 7)
+console.log(sumDigits(0));     // 0
