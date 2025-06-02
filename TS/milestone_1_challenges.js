@@ -69,3 +69,25 @@ var calculateBMI = function (kg, meters) {
 };
 console.log(calculateBMI(68, 1.75));
 console.log(calculateBMI(85, 1.8));
+//CHALLENGE 8 : GREETING BASED ON TIME
+var greetUser = function (user_name, hour) {
+    if (hour > 23 || hour < 0) {
+        return "Enter Hour between 0 and 23";
+    }
+    else {
+        if (hour >= 5 && hour <= 11) {
+            return "Good Morning ".concat(user_name);
+        }
+        else if (hour >= 12 && hour <= 17) {
+            return "Good Afternoon ".concat(user_name);
+        }
+        else if (hour >= 5 && hour <= 11) {
+            return "Good Evening ".concat(user_name);
+        }
+        else {
+            return "Good Night ".concat(user_name);
+        }
+    }
+};
+console.log(greetUser("Alice", 24));
+console.log(greetUser("Alice", 2));
