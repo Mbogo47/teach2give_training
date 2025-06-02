@@ -137,3 +137,20 @@ const countTruthy = (obj: Record<string, unknown>): number => {
 
 console.log(countTruthy({ a: 0, b: "hello", c: false, d: 42, e: null }));
 // returns: 2  // "hello" and 42 are truthy
+
+// Challenge 10:  Average of Numbers
+const average = (arr:number[]): number => {
+  if (arr.length === 0) {
+    return 0;
+  }
+
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+
+  return sum / arr.length;
+};
+
+console.log(average([]));         
+console.log(average([2, 4, 6, 8])); 
