@@ -91,3 +91,18 @@ const filterByLength = (arr: string[], minLength:number): string[] => {
 };
 
 console.log(filterByLength(["cat", "giraffe", "hippo", "dog", "elephant"], 5));
+
+// Challenge 7 : Sum of even numbers
+const sumEvenNumbers2 = (arr: number[]) :number => {
+  
+  let sum = 0
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      sum += arr[i]
+    }
+  }
+  return sum
+}
+
+console.log(sumEvenNumbers2([1, 2, 3, 4, 5, 6]));
