@@ -80,3 +80,18 @@ const sumEvenNumbers2 = (arr) => {
     return sum;
 };
 console.log(sumEvenNumbers2([1, 2, 3, 4, 5, 6]));
+// Challenge 8 :  Difference Between Sum of Even and Odd Numbers
+const differenceEvenOdd = (arr) => {
+    let sumEven = 0;
+    let sumOdd = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            sumEven += arr[i];
+        }
+        else if (arr[i] % 2 != 0) {
+            sumOdd += arr[i];
+        }
+    }
+    return sumEven - sumOdd;
+};
+console.log(differenceEvenOdd([1, 2, 3, 4, 5, 6]));
