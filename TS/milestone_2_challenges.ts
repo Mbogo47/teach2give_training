@@ -76,3 +76,18 @@ const countProperties = (obj: Record<string, unknown>): number => {
 }
 
 console.log(countProperties({ name: "Alice", age: 25, city: "Paris" }));
+
+// Challenge 6: Filter By Length
+const filterByLength = (arr: string[], minLength:number): string[] => {
+
+  const result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].length >= minLength) {
+      result.push(arr[i])
+    }
+  }
+  return result;
+};
+
+console.log(filterByLength(["cat", "giraffe", "hippo", "dog", "elephant"], 5));
