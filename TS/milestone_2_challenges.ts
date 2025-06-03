@@ -65,7 +65,12 @@ console.log(findLongestWord(["apple", "banana", "pear", "grapefruit"]));
 
 
 // Challenge 5 : Count Properties
-const countProperties = (obj: Record<string, unknown>): number => {
+interface Person {
+  name: string;
+  age: number;
+  city: string;
+};
+const countProperties = (obj: Person): number => {
     let count = 0;
     for (let key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -109,26 +114,26 @@ console.log(sumEvenNumbers2([1, 2, 3, 4, 5, 6]));
 
 // Challenge 8 :  Difference Between Sum of Even and Odd Numbers
 const differenceEvenOdd = (arr:number[]): number => {
-  let sumEven = 0;
-  let sumOdd = 0;
+  let difference = 0;
+  // let sumOdd = 0;
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] % 2 === 0) {
-      sumEven += arr[i];
-    } else if (arr[i] % 2 != 0) {
-      sumOdd += arr[i];
+      difference += arr[i];
+    } else{
+      difference -= arr[i];
     } 
   }
-    return sumEven - sumOdd
+    return difference
 }
 
 console.log(differenceEvenOdd([1, 2, 3, 4, 5, 6]));
 
 // Challenge 9:  Count Truthy
-const countTruthy = (obj: Record<string, unknown>): number => {
+const countTruthy = (obj: { [key: string]: unknown }): number => {
   let count = 0;
-  for (let key in obj) {
-    if (obj[key]) {
+  for (let key in Object.values(obj)){
+    if (key) {
       count++;
     }
   }
@@ -196,8 +201,8 @@ console.log(linearSearchAll([5, 3, 7, 1, 4, 7], 7));
 console.log(linearSearchAll([5, 3, 7, 1, 4], 10)); // returns: [2, 5]
 
 // Challenge 14 : Count Occurrences
-const countOccurrences = (arr:string[]) : Record<string, number> => {
-  const occurrence :Record<string, number> = {}
+const countOccurrences = (arr:string[]) : {[key: string]: number} => {
+  const occurrence: { [key: string]: number } = {};
   for (let i = 0; i < arr.length; i++) {
     if (occurrence[arr[i]]) {
       occurrence[arr[i]] += 1;

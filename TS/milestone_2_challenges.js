@@ -47,7 +47,7 @@ const findLongestWord = (arr) => {
     return word;
 };
 console.log(findLongestWord(["apple", "banana", "pear", "grapefruit"]));
-// Challenge 5 : Count Properties
+;
 const countProperties = (obj) => {
     let count = 0;
     for (let key in obj) {
@@ -82,31 +82,31 @@ const sumEvenNumbers2 = (arr) => {
 console.log(sumEvenNumbers2([1, 2, 3, 4, 5, 6]));
 // Challenge 8 :  Difference Between Sum of Even and Odd Numbers
 const differenceEvenOdd = (arr) => {
-    let sumEven = 0;
-    let sumOdd = 0;
+    let difference = 0;
+    // let sumOdd = 0;
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] % 2 === 0) {
-            sumEven += arr[i];
+            difference += arr[i];
         }
-        else if (arr[i] % 2 != 0) {
-            sumOdd += arr[i];
+        else {
+            difference -= arr[i];
         }
     }
-    return sumEven - sumOdd;
+    return difference;
 };
 console.log(differenceEvenOdd([1, 2, 3, 4, 5, 6]));
 // Challenge 9:  Count Truthy
 const countTruthy = (obj) => {
     let count = 0;
-    for (let key in obj) {
-        if (obj[key]) {
+    for (let key in Object.values(obj)) {
+        if (key) {
             count++;
         }
     }
     return count;
 };
 console.log(countTruthy({ a: 0, b: "hello", c: false, d: 42, e: null }));
-// returns: 2  // "hello" and 42 are truthy
+returns: 2; // "hello" and 42 are truthy
 // Challenge 10:  Average of Numbers
 const average = (arr) => {
     if (arr.length === 0) {

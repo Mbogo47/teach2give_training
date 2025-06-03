@@ -11,8 +11,8 @@
     // "disableReferencedProjectLoad": true,             /* Reduce the number of projects loaded automatically by TypeScript. */
 
     /* Language and Environment */
-    "target": "es2016",
-    "lib": ["es2016", "dom"],
+    "target": "es2020",
+    "lib": ["es2020", "dom"],
     "module": "commonjs",
     "strict": true,
     "outDir": "./dist" /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
