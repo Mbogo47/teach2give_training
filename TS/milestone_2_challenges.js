@@ -106,7 +106,7 @@ const countTruthy = (obj) => {
     return count;
 };
 console.log(countTruthy({ a: 0, b: "hello", c: false, d: 42, e: null }));
-returns: 2; // "hello" and 42 are truthy
+// returns: 2  // "hello" and 42 are truthy
 // Challenge 10:  Average of Numbers
 const average = (arr) => {
     if (arr.length === 0) {

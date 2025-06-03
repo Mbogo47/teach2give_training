@@ -231,7 +231,7 @@ console.log(removeDuplicates([1, 2, 3, 2, 4, 1, 5]));
 
 // Challenge 16 : Most Frequent
 const mostFrequent = (arr: (string | number)[]): string | number | null => {
-  const frequency: Record<string, number> = {};
+  const frequency: { [key: string ]: number} = {};
   for (let i = 0; i < arr.length; i++) {
     if (frequency[arr[i]]) {
       frequency[arr[i]] += 1;
