@@ -1,0 +1,122 @@
+[
+	{
+		"id": 1,
+		"patient_id": 1,
+		"doctor_id": 26,
+		"appointment_date": "02-09-26"
+	},
+	{
+		"id": 2,
+		"patient_id": 2,
+		"doctor_id": 40,
+		"appointment_date": "03-26-26"
+	},
+	{
+		"id": 3,
+		"patient_id": 3,
+		"doctor_id": 2,		
+		"appointment_date": "01-06-26"
+	},
+	{
+		"id": 4,
+		"patient_id": 4,
+		"doctor_id": 7,
+		"appointment_date": "12-05-24"
+	},
+	{
+		"id": 5,
+		"patient_id": 5,
+		"doctor_id": 20,
+		"appointment_date": "06-10-24"
+	},
+	{
+		"id": 6,
+		"patient_id": 6,
+		"doctor_id": 21,
+		"appointment_date": "05-30-26"
+	},
+	{
+		"id": 7,
+		"patient_id": 7,
+		"doctor_id": 28,
+		"appointment_date": "03-15-25"
+	},
+	{
+		"id": 8,
+		"patient_id": 8,
+		"doctor_id": 2,
+		"appointment_date": "06-18-25"
+	},
+	{
+		"id": 9,
+		"patient_id": 9,
+		"doctor_id": 29,
+		"appointment_date": "08-22-24"
+	},
+	{
+		"id": 10,
+		"patient_id": 10,
+		"doctor_id": 32,
+		"appointment_date": "01-13-25"
+	},
+	{
+		"id": 11,
+		"patient_id": 11,
+		"doctor_id": 19,
+		"appointment_date": "01-16-25"
+	},
+	{
+		"id": 12,
+		"patient_id": 12,
+		"doctor_id": 1,
+		"appointment_date": "08-16-24"
+	},
+	{
+		"id": 13,
+		"patient_id": 13,
+		"doctor_id": 22,
+		"appointment_date": "07-04-25"
+	},
+	{
+		"id": 14,
+		"patient_id": 14,
+		"doctor_id": 32,
+		"appointment_date": "12-12-24"
+	},
+	{
+		"id": 15,
+		"patient_id": 19,
+		"doctor_id": 1,
+		"appointment_date": "02-01-25"
+	},
+	{
+		"id": 16,
+		"patient_id": 16,
+		"doctor_id": 16,
+		"appointment_date": "09-30-25"
+	},
+	{
+		"id": 17,
+		"patient_id": 17,
+		"doctor_id": 36,
+		"appointment_date": "02-09-25"
+	},
+	{
+		"id": 18,
+		"patient_id": 18,
+		"doctor_id": 12,
+		"appointment_date": "08-18-25"
+	},
+	{
+		"id": 19,
+		"patient_id": 19,
+		"doctor_id": 34,
+		"appointment_date": "11-11-24"
+	},
+	{
+		"id": 20,
+		"patient_id": 20,
+		"doctor_id": 7,
+		"appointment_date": "07-08-25"
+	}
+]

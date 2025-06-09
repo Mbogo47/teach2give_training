@@ -92,7 +92,7 @@ Each borrower is listed individually, and the tables are linked using a foreign 
 | 2            | The Lord of the Rings                  | J. R. R. Tolkien | Fantasy |
 | 3            | Harry Potter and the Sorcerer’s Stone  | J.K. Rowling     | Fantasy |
 
----
+
 
 ###  Borrowers Table
 

@@ -1,0 +1,28 @@
+{
+  "sqltools.connections": [
+    {
+      "mssqlOptions": {
+        "appName": "SQLTools",
+        "useUTC": true,
+        "encrypt": true
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 1433,
+      "driver": "MSSQL",
+      "name": "SQL SERVER LOCAL",
+      "database": "testDB",
+      "username": "sa",
+      "password": "root"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "TEST",
+      "database": "hospital_db",
+      "username": "postgres"
+    }
+  ]
+}
