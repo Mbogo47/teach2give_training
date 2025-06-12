@@ -1,23 +1,20 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
+import dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
+app.use(express.json());
+
 const client = new PrismaClient();
 
 // Get all tasks
-// app.post('/')
 app.get("/tasks", async (req, res) => {
   const tasks = await client.tasks.findMany();
   res.json(tasks);
 });
 
-
-// Get all tasks
-app.get("/tasks", async (req, res) => {
-  const tasks = await client.tasks.findMany();
-  res.json(tasks);
-});
-
-// Get a specific task
+// Get a single task
 app.get("/tasks/:id", async (req, res) => {
   const task = await client.tasks.findUnique({
     where: { id: req.params.id },
@@ -26,11 +23,10 @@ app.get("/tasks/:id", async (req, res) => {
   res.json(task);
 });
 
-// Update a task
 app.put("/tasks/:id", async (req, res) => {
   const { taskTitle, taskDescription, isCompleted } = req.body;
   try {
-    const updatedTask = await prisma.tasks.update({
+    const updatedTask = await client.tasks.update({
       where: { id: req.params.id },
       data: { taskTitle, taskDescription, isCompleted },
     });
@@ -40,10 +36,9 @@ app.put("/tasks/:id", async (req, res) => {
   }
 });
 
-// Delete a task
 app.delete("/tasks/:id", async (req, res) => {
   try {
-    await prisma.tasks.delete({
+    await client.tasks.delete({
       where: { id: req.params.id },
     });
     res.json({ message: "Task deleted" });
@@ -51,6 +46,8 @@ app.delete("/tasks/:id", async (req, res) => {
     res.status(400).json({ error: "Task could not be deleted" });
   }
 });
+
+
 
 let port;
 
