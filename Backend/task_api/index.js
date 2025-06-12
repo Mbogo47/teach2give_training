@@ -8,6 +8,12 @@ app.use(express.json());
 
 const client = new PrismaClient();
 
+// home
+app.get("/", (req, res) => {
+  res.send("Welcome to the Task Manager API!");
+});
+
+
 // Get all tasks
 app.get("/tasks", async (req, res) => {
   const tasks = await client.tasks.findMany();
@@ -23,7 +29,8 @@ app.get("/tasks/:id", async (req, res) => {
   res.json(task);
 });
 
-app.put("/tasks/:id", async (req, res) => {
+// update
+app.patch("/tasks/:id", async (req, res) => {
   const { taskTitle, taskDescription, isCompleted } = req.body;
   try {
     const updatedTask = await client.tasks.update({
@@ -36,6 +43,7 @@ app.put("/tasks/:id", async (req, res) => {
   }
 });
 
+// delete
 app.delete("/tasks/:id", async (req, res) => {
   try {
     await client.tasks.delete({
