@@ -10,7 +10,6 @@ app.get("/tasks", async (req, res) => {
   res.json(tasks);
 });
 
-// Getting
 
 // Get all tasks
 app.get("/tasks", async (req, res) => {

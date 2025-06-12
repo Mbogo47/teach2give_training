@@ -80,3 +80,6 @@ Host: www.google.com
 - As you interact with the search results, additional HTTP requests may be made (e.g., when loading images, videos, or more results). The entire process is optimized for speed and efficiency, ensuring that your experience is as seamless as possible.
 
 ![Content](result.webp)
+
+> **SOURCES**  
+> [HojaLeaks](https://hojaleaks.com/what-happens-when-you-type-googlecom-and-start-searching)  
