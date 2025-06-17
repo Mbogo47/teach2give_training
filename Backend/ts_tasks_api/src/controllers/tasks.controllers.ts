@@ -4,6 +4,10 @@ import { faker } from "@faker-js/faker";
 
 const client = new PrismaClient();
 
+export const home =  (_req: Request, res: Response) => {
+    res.send("Welcome to the Task Manager API!");
+};
+
 export const getAllTasks = async (_req: Request, res: Response) => {
   try {
     const tasks = await client.tasks.findMany();
@@ -14,12 +18,17 @@ export const getAllTasks = async (_req: Request, res: Response) => {
   }
 };
 
-export const getSpecificTasks = async (req: Request, res: Response) => {
-  const task = await client.tasks.findUnique({
-    where: { id: req.params.id },
-  });
-  if (!task) return res.status(404).json({ error: "task not found" });
-  res.json(task);
+export const getSpecificTask = async (req: Request, res: Response) => {
+  try {
+    const task = await client.tasks.findUnique({
+      where: { id: req.params.id },
+    });
+    if (!task) return res.status(404).json({ error: "task not found" });
+    res.json(task);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
 };
 
 export const createNewTask = async (_req: Request, res: Response) => {

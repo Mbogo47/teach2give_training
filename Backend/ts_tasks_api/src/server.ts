@@ -1,16 +1,12 @@
 import express from 'express';
 import dotenv from "dotenv";
-import { Request, Response } from "express";    
+import router from './routes/tasks.routers.ts'
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
-
-// home
-app.get("/", (req:Request, res:Response) => {
-    res.send("Welcome to the Task Manager API!");
-});
+app.use('/', router)
 
 const PORT = process.env.port || 4000
 app.listen(PORT, () => {
