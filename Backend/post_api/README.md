@@ -139,8 +139,8 @@ Response Example:
 ]
 ```
 
-- GET `/posts/:id`
-Returns a single post by ID with author details.
+### GET `/posts/:id`
+- Returns a single post by ID with author details.
 
 Response Example:
 ```json
