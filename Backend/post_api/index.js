@@ -30,6 +30,11 @@ app.get("/users", async (req, res) => {
 app.get("/users/:id", async (req, res) => {
   const user = await client.user.findUnique({
     where: { id: req.params.id },
+    include: {
+      posts: {
+        where: { isDeleted: false },
+      },
+    },
   });
   if (!user) return res.status(404).json({ error: "User not found" });
   res.json(user);
@@ -105,7 +110,7 @@ app.put("/posts/:id", async (req, res) => {
   const { id } = req.params;
   const { title, content } = req.body;
   try {
-    const updated = await prisma.post.update({
+    const updated = await client.post.update({
       where: { id },
       data: { title, content },
     });
@@ -119,7 +124,7 @@ app.put("/posts/:id", async (req, res) => {
 app.delete("/posts/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const deleted = await prisma.post.update({
+    const deleted = await client.post.update({
       where: { id },
       data: { isDeleted: true },
     });
