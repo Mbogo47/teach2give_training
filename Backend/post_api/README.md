@@ -17,13 +17,10 @@ The project demonstrates:
 - PostgreSQL
 - Faker.js (for generating dummy data)
 
----
 
 ## Endpoints
 
 ### Users
-
----
 
 ### GET `/users`
 
@@ -55,7 +52,7 @@ The project demonstrates:
         "username": "Alexandro_Kohler"
     },
 ]
-
+```
 ### GET `/users/:id`
 - Returns a single user by ID along with their blog posts.
 
@@ -82,3 +79,105 @@ The project demonstrates:
 }
 ```
 
+### POST `/users`
+- Creates a new user.
+
+**Response Body:**
+
+```json
+[
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "emailAddress": "john.doe@example.com",
+  "username": "johnny"
+}
+]
+```
+
+### Posts
+
+
+### GET `/posts`
+- Returns a list of all posts (including author details).
+
+Response Example:
+```json
+[
+  {
+    "id": "84b961a9-6c9a-4985-ae2e-79e23dc3a16c",
+    "title": "Conturbo pecus thymbra tardus caelestis delibero absum trado aliqua.",
+    "content": "Acsi vigor adversus cursus. Statua eveniet conitor theca decet suscipit. Ducimus viduo vaco tui distinctio sub inventore.\nAdhaero defleo ars beneficium. Surculus spes temperantia tot. Tactus dolore esse.",
+    "createdAt": "2025-06-17T03:15:41.864Z",
+    "lastUpdated": "2025-06-17T03:15:41.864Z",
+    "isDeleted": false,
+    "userId": "c8036b54-4d67-479d-a63e-7f7582fb4a06",
+    "user": {
+      "id": "c8036b54-4d67-479d-a63e-7f7582fb4a06",
+      "firstName": "Robyn",
+      "lastName": "Walker",
+      "emailAddress": "Kamron_Treutel@gmail.com",
+      "username": "Euna_Hagenes66"
+    }
+  },
+  {
+    "id": "b66d12aa-842a-4fbf-a85b-f625221122df",
+    "title": "Vinculum accedo depraedor contigo.",
+    "content": "Adnuo vomica nostrum contabesco adulatio. Quam solum comptus celer unus. Possimus tabernus sponte adiuvo.\nBlandior solvo triumphus spiculum verbum. Curtus tristis sunt aspicio. Adhuc claustrum vulticulus rem.",
+    "createdAt": "2025-06-17T03:15:45.314Z",
+    "lastUpdated": "2025-06-17T03:15:45.314Z",
+    "isDeleted": false,
+    "userId": "c8036b54-4d67-479d-a63e-7f7582fb4a06",
+    "user": {
+      "id": "c8036b54-4d67-479d-a63e-7f7582fb4a06",
+      "firstName": "Robyn",
+      "lastName": "Walker",
+      "emailAddress": "Kamron_Treutel@gmail.com",
+      "username": "Euna_Hagenes66"
+    }
+  },
+]
+```
+
+- GET `/posts/:id`
+Returns a single post by ID with author details.
+
+Response Example:
+```json
+{
+  "id": "b66d12aa-842a-4fbf-a85b-f625221122df",
+  "title": "Vinculum accedo depraedor contigo.",
+  "content": "Adnuo vomica nostrum contabesco adulatio. Quam solum comptus celer unus. Possimus tabernus sponte adiuvo.\nBlandior solvo triumphus spiculum verbum. Curtus tristis sunt aspicio. Adhuc claustrum vulticulus rem.",
+  "createdAt": "2025-06-17T03:15:45.314Z",
+  "lastUpdated": "2025-06-17T03:15:45.314Z",
+  "isDeleted": false,
+  "userId": "c8036b54-4d67-479d-a63e-7f7582fb4a06",
+  "user": {
+    "id": "c8036b54-4d67-479d-a63e-7f7582fb4a06",
+    "firstName": "Robyn",
+    "lastName": "Walker",
+    "emailAddress": "Kamron_Treutel@gmail.com",
+    "username": "Euna_Hagenes66"
+  }
+}
+```
+### POST `/posts`
+- Creates a new blog post with random lorem content.
+
+Request Body:
+```json
+{
+  "userId": "9ccd7f5f-2181-45b3-88ef-a92364ac4161"
+}
+```
+
+### PUT `/posts/:id`
+- Updates an existing post.
+
+Request Body Example:
+```json
+{
+  "title": "Updated Title",
+  "content": "Updated Content"
+}
+```
