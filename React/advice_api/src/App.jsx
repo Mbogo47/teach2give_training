@@ -4,7 +4,7 @@ import { Hourglass } from "react-loader-spinner";
 import "./App.css";
 
 function App() {
-  const [advice, setAdvice] = useState("Don't be afraid of silly ideas.");
+  const [advice, setAdvice] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
