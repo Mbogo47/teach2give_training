@@ -10,7 +10,7 @@ function App() {
 
   const fetchAdvice = async () => {
     setLoading(true);
-    setError(null); // clear any previous error
+    setError(null); 
     setAdvice(null);
     try {
       const response = await axios.get(`https://api.adviceslip.com/advice`);
@@ -31,7 +31,7 @@ function App() {
 
       {loading ? (
         <div className="loader">
-          <Hourglass color="#4fa94d" />
+          <Hourglass  />
         </div>
       ) : error ? (
         <p className="error">{error}</p>
