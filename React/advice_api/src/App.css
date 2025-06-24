@@ -1,0 +1,54 @@
+body {
+  font-family: "Truculenta", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.advice-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.advice {
+  font-size: 1.4rem;
+  color: #555;
+  font-style: italic;
+}
+
+.btn {
+  background-color: #4fa94d;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  width: 15rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+
