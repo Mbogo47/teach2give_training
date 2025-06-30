@@ -1,0 +1,74 @@
+:root {
+  --font-family: "VT323", monospace;
+  --font-cursive: "Press Start 2P", system-ui;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* outline: none; */
+  border: none;
+  transition: all 0.2s ease-out;
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 3rem;
+  font-family: var(--font-family);
+  text-transform: capitalize;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 50px;
+  color: #333;
+}
+
+section {
+  padding: 2rem 4%;
+}
+
+.container {
+  background-color: white;
+  padding: 20px;
+  margin: 0 auto;
+  width: 700px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 8px;
+  width: 90%;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 16px;
+}
