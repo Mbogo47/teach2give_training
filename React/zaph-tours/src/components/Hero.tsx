@@ -8,7 +8,7 @@ const Hero = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "60vh",
+        minHeight: "100vh",
         backgroundImage: 'url("/hero.jpg")',
         backgroundSize: "cover",
         backgroundPosition: "center",
