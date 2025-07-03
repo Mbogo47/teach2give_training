@@ -16,7 +16,6 @@ const Hero = () => {
         color: "white",
         mb: 3,
       }}
-      
     >
       <Box
         sx={{

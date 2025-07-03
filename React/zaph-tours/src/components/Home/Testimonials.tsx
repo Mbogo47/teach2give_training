@@ -1,13 +1,19 @@
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
+import { Box, Typography } from "@mui/material";
+import CardSlider from "./TestimonialSlider";
 
-const Testimonials = () =>  {
+const Testimonials = () => {
   return (
-    <Stack direction="row" spacing={2}>
-      <Avatar alt="Remy Sharp" src="/lake-nakuru.jfif"/>
-      <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-      <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-    </Stack>
+    <Box py={4}>
+      <Typography
+        variant="h4"
+        textAlign="center"
+        color="secondary.dark"
+        sx={{ mb: 3 }}
+      >
+        Testimonials
+      </Typography>
+      <CardSlider />
+    </Box>
   );
-}
+};
 export default Testimonials;

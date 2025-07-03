@@ -1,20 +1,18 @@
-import { Box, Typography, Container } from "@mui/material";
-import CardSlider from "./CardSlider"
+import { Box, Typography } from "@mui/material";
+import CardSlider from "./DestinationSlider";
 
 const FeaturedDestinations = () => {
   return (
     <Box py={4} sx={{ backgroundColor: "#fff" }}>
-      <Container>
-        <Typography
-          variant="h4"
-          textAlign="center"
-          color="secondary.dark"
-          sx={{ mb: 3}}
-        >
-          Featured Destinations
-        </Typography>
-        <CardSlider />
-      </Container>
+      <Typography
+        variant="h4"
+        textAlign="center"
+        color="secondary.dark"
+        sx={{ mb: 3 }}
+      >
+        Featured Destinations
+      </Typography>
+      <CardSlider />
     </Box>
   );
 };

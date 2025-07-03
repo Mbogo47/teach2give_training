@@ -12,11 +12,7 @@ const About = () => {
         >
           About Us
         </Typography>
-        <Typography
-          variant="body2"
-          
-          sx={{ color: "black", fontSize: "1.3rem" }}
-        >
+        <Typography variant="body2" sx={{ color: "black", fontSize: "1.3rem" }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
           sapiente reiciendis nisi id veniam totam quas esse, debitis pariatur
           ipsum voluptatibus sed deserunt voluptates libero officiis ut atque

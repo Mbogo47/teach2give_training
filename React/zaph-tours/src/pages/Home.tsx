@@ -4,7 +4,6 @@ import FeaturedDestinations from "../components/Home/FeaturedDestinations.tsx";
 import Testimonials from "../components/Home/Testimonials.tsx";
 import NewsLetter from "../components/Home/NewsLetter.tsx";
 
-
 const Home = () => {
   return (
     <>
