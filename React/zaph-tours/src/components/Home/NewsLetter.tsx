@@ -7,21 +7,17 @@ import {
   Button,
   Stack,
 } from "@mui/material";
+import Title from "../Title";
 
 const NewsLetter = () => {
   return (
-    <Box py={4} >
-      <Card sx={{ maxWidth: 700, mx: "auto", p: 3 , backgroundColor: "default" }}>
+    <Box py={4}>
+      <Card
+        sx={{ maxWidth: 700, mx: "auto", p: 3, backgroundColor: "default" }}
+      >
         <CardContent>
           <Box component="form">
-            <Typography
-              variant="h5"
-              textAlign="center"
-              color="secondary.dark"
-              gutterBottom
-            >
-              Newsletter
-            </Typography>
+            <Title title=" Newsletter" />
             <Typography variant="h4" textAlign="center" sx={{ mb: 3 }}>
               Stay up to date with our latest trips and prices
             </Typography>

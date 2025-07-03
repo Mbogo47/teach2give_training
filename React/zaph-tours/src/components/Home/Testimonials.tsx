@@ -1,17 +1,10 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import CardSlider from "./TestimonialSlider";
-
+import Title from "../Title";
 const Testimonials = () => {
   return (
     <Box py={4} sx={{ backgroundColor: "#fff" }}>
-      <Typography
-        variant="h4"
-        textAlign="center"
-        color="secondary.dark"
-        sx={{ mb: 3 }}
-      >
-        Testimonials
-      </Typography>
+      <Title title="Testimonials" />
       <CardSlider />
     </Box>
   );

@@ -1,17 +1,11 @@
 import { Box, Typography, Container } from "@mui/material";
+import Title from "../Title";
 
 const About = () => {
   return (
     <Box sx={{ backgroundColor: "#fff" }}>
       <Container>
-        <Typography
-          variant="h4"
-          textAlign="center"
-          color="secondary.dark"
-          sx={{ mb: 1.5 }}
-        >
-          About Us
-        </Typography>
+        <Title title='About Us'/>
         <Typography variant="body2" sx={{ color: "black", fontSize: "1.3rem" }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
           sapiente reiciendis nisi id veniam totam quas esse, debitis pariatur
