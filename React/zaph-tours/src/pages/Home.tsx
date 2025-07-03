@@ -1,8 +1,9 @@
-import Hero from "../components/Hero.tsx";
-import About from "../components/About.tsx";
-import FeaturedDestinations from "../components/FeaturedDestinations.tsx";
-import Testimonials from "../components/Testimonials.tsx";
-import NewsLetter from "../components/NewsLetter.tsx";
+import Hero from "../components/Home/Hero.tsx";
+import About from "../components/Home/About.tsx";
+import FeaturedDestinations from "../components/Home/FeaturedDestinations.tsx";
+import Testimonials from "../components/Home/Testimonials.tsx";
+import NewsLetter from "../components/Home/NewsLetter.tsx";
+
 
 const Home = () => {
   return (
