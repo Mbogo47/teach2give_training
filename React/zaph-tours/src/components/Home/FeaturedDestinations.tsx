@@ -9,7 +9,7 @@ const FeaturedDestinations = () => {
           variant="h4"
           textAlign="center"
           color="secondary.dark"
-          sx={{ mb: 4 }}
+          sx={{ mb: 3}}
         >
           Featured Destinations
         </Typography>

@@ -10,7 +10,6 @@ import { cards } from "./DestinationData.ts";
 
 const CardSlider: React.FC = () => {
   return (
-    <div style={{ width: "100%" }}>
       <Swiper
         modules={[FreeMode, Autoplay]}
         freeMode={true}
@@ -27,7 +26,7 @@ const CardSlider: React.FC = () => {
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index} style={{ width: "350px", flexShrink: 0 }}>
-            <Card sx={{ height: 350 }}>
+            <Card sx={{ height: 300 }}>
               <CardMedia
                 component="img"
                 height="140"
@@ -49,7 +48,7 @@ const CardSlider: React.FC = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+
   );
 };
 
