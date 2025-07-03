@@ -2,7 +2,7 @@ import { Box, Typography, Container } from "@mui/material";
 
 const About = () => {
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "#fff" }}>
       <Container>
         <Typography
           variant="h4"

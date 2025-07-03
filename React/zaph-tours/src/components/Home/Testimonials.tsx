@@ -3,7 +3,7 @@ import CardSlider from "./TestimonialSlider";
 
 const Testimonials = () => {
   return (
-    <Box py={4}>
+    <Box py={4} sx={{ backgroundColor: "#fff" }}>
       <Typography
         variant="h4"
         textAlign="center"

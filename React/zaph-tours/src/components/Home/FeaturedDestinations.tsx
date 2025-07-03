@@ -3,7 +3,7 @@ import CardSlider from "./DestinationSlider";
 
 const FeaturedDestinations = () => {
   return (
-    <Box py={4} sx={{ backgroundColor: "#fff" }}>
+    <Box py={4} >
       <Typography
         variant="h4"
         textAlign="center"
