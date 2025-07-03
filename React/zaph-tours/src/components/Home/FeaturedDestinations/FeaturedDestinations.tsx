@@ -1,6 +1,6 @@
-import { Box} from "@mui/material";
+import { Box } from "@mui/material";
 import CardSlider from "./DestinationSlider";
-import Title from "../Title";
+import Title from "../../Title";
 
 const FeaturedDestinations = () => {
   return (

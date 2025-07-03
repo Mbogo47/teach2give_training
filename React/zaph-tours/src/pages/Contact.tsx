@@ -1,35 +1,18 @@
-import { Box, TextField, Button} from '@mui/material';
+import { Box } from '@mui/material';
 import Title from '../components/Title';
+import ContactForm from '../components/ContactUs/ContactForm';
+import ContactInfo from "../components/ContactUs/ContactInfo";
+
+
 const Contact = () => {
   return (
-    <>
-     <Title title='Contact Us'/>
-      <Box
-        component="form"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-          maxWidth: 400,
-          mx: "auto",
-          mt: 4,
-        }}
-      >
-        <TextField label="Name" variant="outlined" required />
-        <TextField label="Email" variant="outlined" type="email" required />
-        <TextField label="Subject" variant="outlined" required />
-        <TextField
-          label="Message"
-          variant="outlined"
-          multiline
-          rows={4}
-          required
-        />
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
+    <Box >
+      <Box sx={{ backgroundColor: "#fff" }}>
+     {/* <Title title='Talk to us'/> */}
+      <ContactForm />
       </Box>
-    </>
+      <ContactInfo />
+    </Box>
   );
 };
 

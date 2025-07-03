@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import CardSlider from "./TestimonialSlider";
-import Title from "../Title";
+import Title from "../../Title";
 const Testimonials = () => {
   return (
     <Box py={4} sx={{ backgroundColor: "#fff" }}>
