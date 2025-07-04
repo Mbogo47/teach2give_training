@@ -23,16 +23,19 @@ const contactItems = [
 ];
 
 const ContactInfo = () => (
-  <Box sx={{ mt: 4}}>
+  <Box sx={{ mt: 4, width: "50% ", padding: 2 }}>
     <Title title="Contact Information" />
     <Stack
-      direction={{ xs: "column", sm: "row" }}
+      direction={{ xs: "column" }}
       spacing={2}
-      justifyContent="center"
+      justifyContent="space-between"
       alignItems="center"
     >
       {contactItems.map((item, idx) => (
-        <Card key={idx} sx={{ maxWidth: 300, width: "100%", textAlign: "center" }}>
+        <Card
+          key={idx}
+          sx={{ maxWidth: 300, width: "100%", textAlign: "center" }}
+        >
           <CardContent>
             <Box sx={{ mb: 1 }}>{item.icon}</Box>
             <Typography variant="subtitle1" fontWeight="bold">
