@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import ContactForm from "../components/ContactUs/ContactForm";
 import ContactInfo from "../components/ContactUs/ContactInfo";
 import ContactMap from "../components/ContactUs/ContactMap";
+import OfficeHours from "../components/ContactUs/OfficeHours";
 
 const Contact = () => {
   return (
@@ -20,6 +21,7 @@ const Contact = () => {
         <ContactInfo />
         <ContactMap />
       </Box>
+      <OfficeHours />
     </Box>
   );
 };
