@@ -19,7 +19,7 @@ const CardSlider: React.FC = () => {
         pauseOnMouseEnter: false,
       }}
       speed={10000}
-      loop={false}
+      loop={true}
       slidesPerView={"auto"}
       spaceBetween={16}
       style={{ padding: "16px" }}
