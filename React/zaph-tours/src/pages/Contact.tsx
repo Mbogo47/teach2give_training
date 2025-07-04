@@ -1,17 +1,25 @@
-import { Box } from '@mui/material';
-//import Title from '../components/Title';
-import ContactForm from '../components/ContactUs/ContactForm';
+import { Box } from "@mui/material";
+import ContactForm from "../components/ContactUs/ContactForm";
 import ContactInfo from "../components/ContactUs/ContactInfo";
-
+import ContactMap from "../components/ContactUs/ContactMap";
 
 const Contact = () => {
   return (
-    <Box >
+    <Box>
       <Box sx={{ backgroundColor: "#fff" }}>
-     {/* <Title title='Talk to us'/> */}
-      <ContactForm />
+        <ContactForm />
       </Box>
-      <ContactInfo />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          padding: 2,
+        }}
+      >
+        <ContactInfo />
+        <ContactMap />
+      </Box>
     </Box>
   );
 };
