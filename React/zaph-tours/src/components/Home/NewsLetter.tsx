@@ -12,9 +12,7 @@ import Title from "../Title";
 const NewsLetter = () => {
   return (
     <Box py={4}>
-      <Card
-        sx={{ maxWidth: 700, mx: "auto", p: 3, }}
-      >
+      <Card sx={{ maxWidth: 700, mx: "auto", p: 3 }}>
         <CardContent>
           <Box component="form">
             <Title title=" Newsletter" />
