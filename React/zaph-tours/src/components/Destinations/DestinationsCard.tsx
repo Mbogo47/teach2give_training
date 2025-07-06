@@ -18,8 +18,8 @@ const DestinationsCard = ({ destination }: Props) => {
     <Card
       sx={{
         maxWidth: 345,
-              height: "100%",
-        width:"300px",
+        height: "100%",
+        width: "300px",
         display: "flex",
         flexDirection: "column",
       }}
