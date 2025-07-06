@@ -7,8 +7,7 @@ import Home from "./pages/Home.tsx";
 import Contact from "./pages/Contact.tsx";
 import Destinations from "./pages/Destinations.tsx";
 import Trips from "./pages/Trips.tsx";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Footer from "./components/Home/Footer.tsx";
 
 const App: React.FC = () => {
   return (
@@ -21,6 +20,7 @@ const App: React.FC = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/trips" element={<Trips />} />
       </Routes>
+      <Footer />
     </ThemeProvider>
   );
 };

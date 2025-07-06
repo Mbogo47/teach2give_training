@@ -3,6 +3,7 @@ import ContactForm from "../components/ContactUs/ContactForm";
 import ContactInfo from "../components/ContactUs/ContactInfo";
 import ContactMap from "../components/ContactUs/ContactMap";
 import OfficeHours from "../components/ContactUs/OfficeHours";
+import Socials from "../components/ContactUs/Socials";
 
 const Contact = () => {
   return (
@@ -22,6 +23,7 @@ const Contact = () => {
         <ContactMap />
       </Box>
       <OfficeHours />
+      <Socials />
     </Box>
   );
 };
