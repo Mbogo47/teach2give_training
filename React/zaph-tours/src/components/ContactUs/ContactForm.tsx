@@ -1,12 +1,12 @@
-import { Box, Button, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 
 const ContactForm = () => (
   <Box
     sx={{
       py: 6,
       px: 2,
-      display: 'flex',
-      justifyContent: 'center',
+      display: "flex",
+      justifyContent: "center",
     }}
   >
     <Box
@@ -14,7 +14,7 @@ const ContactForm = () => (
       noValidate
       sx={{
         maxWidth: 500,
-        width: '100%',
+        width: "100%",
         p: 4,
         borderRadius: 2,
         boxShadow: 3,

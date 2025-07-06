@@ -5,7 +5,7 @@ const About = () => {
   return (
     <Box sx={{ backgroundColor: "#fff" }}>
       <Container>
-        <Title title='About Us'/>
+        <Title title="About Us" />
         <Typography variant="body2" sx={{ color: "black", fontSize: "1.3rem" }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
           sapiente reiciendis nisi id veniam totam quas esse, debitis pariatur
