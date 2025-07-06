@@ -1,5 +1,3 @@
-// src/data/tripTypesData.ts
-
 export type TripType = {
   title: string;
   images: string[];

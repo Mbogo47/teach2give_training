@@ -1,45 +1,53 @@
-// src/pages/TripTypesPage.tsx
-
-import {
-  Box,
-  Typography,
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
 import tripTypes, { TripType } from "./TripsData";
 
 const TripTypes = () => {
   return (
     <Box sx={{ p: 4 }}>
-      <Grid
-        container
-        spacing={4}
-        sx={{ display: "flex", justifyContent: "center" }}
+      <Typography variant="h4" align="center" gutterBottom>
+        Trip Packages
+      </Typography>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: 3,
+        }}
       >
         {tripTypes.map((trip: TripType, index: number) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card sx={{ height: "100%", width: "300px" }}>
-              <CardMedia
-                component="img"
-                height="200"
-                image={trip.images[0]}
-                alt={trip.title}
-              />
-              <CardContent>
-                <Typography variant="h5" gutterBottom>
-                  {trip.title}
-                </Typography>
-                <Typography variant="body2">{trip.description}</Typography>
-                <Typography sx={{ mt: 1 }} color="secondary.dark">
-                  {trip.price}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+          <Card
+            key={index}
+            sx={{
+              width: 300,
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+            }}
+          >
+            <CardMedia
+              component="img"
+              height="180"
+              image={trip.images[0]}
+              alt={trip.title}
+            />
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                {trip.title}
+              </Typography>
+              <Typography variant="body2">{trip.description}</Typography>
+              <Typography color="secondary" sx={{ mt: 1 }}>
+                {trip.price}
+              </Typography>
+            </CardContent>
+          </Card>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 };

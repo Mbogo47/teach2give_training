@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, Container } from "@mui/material";
+import { Box, Typography, Container } from "@mui/material";
 import DestinationsCard from "../components/Destinations/DestinationsCard";
 import destinationsData from "../components/Destinations/Destinations";
 import Title from "../components/Title";
@@ -12,17 +12,21 @@ const Destinations = () => {
           Discover breathtaking places with Zaph Tours – perfect for solo and
           group travelers.
         </Typography>
-        <Grid
-          container
-          spacing={4}
-          sx={{ display: "flex", justifyContent: "center" }}
+
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: 4,
+          }}
         >
           {destinationsData.map((dest) => (
-            <Grid item xs={12} sm={6} md={4} key={dest.id}>
+            <Box key={dest.id} sx={{ width: 300 }}>
               <DestinationsCard destination={dest} />
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );
