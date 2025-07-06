@@ -20,7 +20,8 @@ const Footer = () => {
         alignItems="center"
         gap={1}
       >
-        Designed with <FavoriteIcon fontSize="small" color="error" /> by Ivy Mbogo &copy; {new Date().getFullYear()}
+        Designed with <FavoriteIcon fontSize="small" color="error" /> by Ivy
+        Mbogo &copy; {new Date().getFullYear()}
       </Typography>
     </Box>
   );
