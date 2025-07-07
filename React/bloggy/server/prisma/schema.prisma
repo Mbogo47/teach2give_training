@@ -12,3 +12,28 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+// Models
+model User {
+  id String @id @default(uuid())
+ emailAddress          String   @unique
+  username       String   @unique
+  password       String
+  lastName           String
+  firstName           String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  blogs          Blog[]
+}
+
+model Blog {
+   id String @id @default(uuid())
+  title       String
+  content     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isDeleted     Boolean  @default(false)
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+}
