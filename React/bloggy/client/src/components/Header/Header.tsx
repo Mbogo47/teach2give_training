@@ -24,7 +24,6 @@ const Header = () => {
             <Button color="inherit" component={Link} to="/signup">
               Sign Up
             </Button>
-           
           </Box>
         </Toolbar>
       </Container>

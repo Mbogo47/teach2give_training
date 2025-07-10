@@ -13,7 +13,6 @@ import { domain } from "../utils/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-
 const SignIn = () => {
   const [form, setForm] = useState({
     identifier: "",
@@ -32,8 +31,7 @@ const SignIn = () => {
 
     const { identifier, password } = form;
 
-    
-    if (!identifier || !password) {
+    if (!form.identifier || !form.password) {
       toast.error("Please enter both username/email and password.");
       return;
     }
@@ -46,7 +44,6 @@ const SignIn = () => {
       });
       localStorage.setItem("token", res.data.token);
       toast.success("Login successful");
-
       navigate("/blogs");
     } catch (err: any) {
       const message =
@@ -56,7 +53,6 @@ const SignIn = () => {
       setLoading(false);
     }
   };
-  
 
   return (
     <Container component="main" maxWidth="xs">

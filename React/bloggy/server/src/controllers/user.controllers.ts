@@ -26,9 +26,7 @@ export const registerUser = async (
     });
 
     if (existingUser) {
-      res
-        .status(409)
-        .json({ error: "User with email or username already exists." });
+      res.status(409).json({ error: "Email or username already exists." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -68,10 +66,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
     const user = await client.user.findFirst({
       where: {
-        OR: [
-          { username: identifier },
-          { emailAddress: identifier }
-        ],
+        OR: [{ username: identifier }, { emailAddress: identifier }],
       },
     });
 
@@ -90,7 +85,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     const token = jwt.sign(
       { userId: user.id },
       process.env.JWT_SECRET as string,
-      { expiresIn: '7d' }
+      { expiresIn: "7d" },
     );
 
     res.status(200).json({
