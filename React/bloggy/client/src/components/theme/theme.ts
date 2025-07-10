@@ -4,18 +4,18 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#2C3E50", 
+      main: "#2C3E50",
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#E67E22", 
+      main: "#E67E22",
     },
     background: {
-      default: "#F8F9FA", 
+      default: "#F8F9FA",
       paper: "#ffffff",
     },
     text: {
-      primary: "#2C3E50", 
+      primary: "#2C3E50",
       secondary: "#7F8C8D",
     },
   },
@@ -45,7 +45,6 @@ const theme = createTheme({
   shape: {
     borderRadius: 10,
   },
- 
 });
 
 export default theme;
