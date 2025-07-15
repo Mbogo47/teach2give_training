@@ -45,7 +45,7 @@ const Header = () => {
       <Container>
         <Toolbar>
           <Typography variant="h5" sx={{ flexGrow: 1 }}>
-            Bloggy
+            BlogIt
           </Typography>
 
           {user ? (
