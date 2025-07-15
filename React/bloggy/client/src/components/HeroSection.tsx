@@ -7,42 +7,37 @@ const HeroSection = () => {
   return (
     <Box
       sx={{
-        bgcolor: "background.paper",
+        bgcolor: "#f0f4ff", 
         py: { xs: 8, md: 12 },
         px: { xs: 2, md: 6 },
       }}
     >
-      <Container maxWidth="md">
-        <Box sx={{ textAlign: "center" }}>
-          <Typography
-            variant="h3"
-            component="h1"
-            gutterBottom
-            sx={{ fontWeight: "bold", color: "text.primary" }}
-          >
-            Share Your <span style={{ color: "#1976d2" }}>Stories</span> with
-            the World
-          </Typography>
+      <Container maxWidth="lg">
+        <Typography
+          variant="h3"
+          component="h1"
+          gutterBottom
+          sx={{
+            fontWeight: "bold",
+            color: "text.primary",
+          }}
+        >
+          Discover <span style={{ color: "#1976d2" }}>Voices</span> That Matter
+        </Typography>
 
-          <Typography
-            variant="h6"
-            color="text.secondary"
-            paragraph
-            sx={{ mt: 2 }}
-          >
-            Bloggy helps you write, manage, and share your thoughts. Join a
-            creative community and start publishing your own blogs today.
-          </Typography>
+        <Typography variant="h6" color="text.secondary" paragraph>
+          Explore insightful articles, unique perspectives, and passionate writers
+          from around the world. Bloggy is your window into stories that inspire and inform.
+        </Typography>
 
-          <Button
-            variant="contained"
-            size="large"
-            sx={{ mt: 4 }}
-            onClick={() => navigate("/signup")}
-          >
-            Get Started
-          </Button>
-        </Box>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{ mt: 3 }}
+          onClick={() => navigate("/blogs")}
+        >
+          Explore Blogs
+        </Button>
       </Container>
     </Box>
   );
