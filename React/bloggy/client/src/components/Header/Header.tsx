@@ -7,11 +7,14 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Toolbar
+  Toolbar, 
+  MuiLink 
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+
+
 
 const Header = () => {
   const { user, logout } = useAuth();
@@ -43,14 +46,15 @@ const Header = () => {
     <AppBar position="static">
       <Container>
         <Toolbar>
-                <Link
-        component={Link}
-        to="/"
-        color="inherit"
-        sx={{  cursor: 'pointer' }}
-      >
-        BlogIt
-      </Link>
+        <MuiLink
+          component={Link}
+          to="/"
+          color="inherit"
+          sx={{ cursor: 'pointer', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.25rem' }}
+         >
+  BlogIt
+</MuiLink>
+
 
           {user ? (
             <>
