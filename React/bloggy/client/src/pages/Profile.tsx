@@ -51,6 +51,8 @@ const UserProfile = () => {
     fetchProfile();
   }, []);
 
+  console.log(user)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 

@@ -38,10 +38,7 @@ const Header = () => {
     handleClose();
   };
 
-  const getAvatarSrc = () => {
-    if (user?.profileImage) return user.profileImage;
-    return "/default-avatar.png";
-  };
+ 
 
   return (
     <AppBar position="static">

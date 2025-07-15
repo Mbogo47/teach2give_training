@@ -50,6 +50,7 @@ const SignUp = () => {
       });
       toast.success("User created successful");
       navigate("/signin");
+      console.log(res)
     } catch (err: any) {
       const message =
         err.response?.data?.error || err.message || "Login failed";
