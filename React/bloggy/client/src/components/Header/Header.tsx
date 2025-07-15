@@ -7,9 +7,9 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Toolbar, 
-  MuiLink 
+  Toolbar
 } from "@mui/material";
+import MuiLink from "@mui/material/Link";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
