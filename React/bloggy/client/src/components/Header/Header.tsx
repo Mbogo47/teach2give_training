@@ -44,9 +44,14 @@ const Header = () => {
     <AppBar position="static">
       <Container>
         <Toolbar>
-          <Typography variant="h5" sx={{ flexGrow: 1 }}>
-            BlogIt
-          </Typography>
+                <Link
+        component={Link}
+        to="/"
+        color="inherit"
+        sx={{  cursor: 'pointer' }}
+      >
+        BlogIt
+      </Link>
 
           {user ? (
             <>
