@@ -7,8 +7,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Toolbar,
-  Typography,
+  Toolbar
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
