@@ -179,3 +179,40 @@ export const updateBlog = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Failed to update blog." });
   }
 };
+
+export const deleteBlog = async (req: Request, res: Response) => {
+  const blogId = req.params.id;
+
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "Unauthorized" });
+
+  let decoded;
+  try {
+    decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      userId: string;
+    };
+  } catch {
+    return res.status(401).json({ error: "Invalid token" });
+  }
+
+  try {
+    const updated = await client.blog.updateMany({
+      where: {
+        id: blogId,
+        authorId: decoded.userId,
+      },
+      data: {
+        isDeleted: true,
+      },
+    });
+
+    if (updated.count === 0) {
+      return res.status(404).json({ message: "Blog not found or not yours" });
+    }
+
+    res.json({ message: "Blog soft deleted" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+};

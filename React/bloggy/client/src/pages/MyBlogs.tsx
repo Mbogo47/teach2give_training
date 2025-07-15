@@ -46,6 +46,22 @@ const MyBlogs = () => {
     }
   };
 
+  const handleDelete = async (id: string) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    try {
+      await axios.patch(`${domain}/blogs/${id}`, null, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      toast.success("Blog deleted");
+      setBlogs((prev) => prev.filter((blog) => blog.id !== id));
+    } catch (err) {
+      toast.error("Failed to delete blog");
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     fetchMyBlogs();
   }, []);
@@ -93,13 +109,13 @@ const MyBlogs = () => {
                   >
                     {blog.synopsis}
                   </Typography>
+
                   <Box display="flex" justifyContent="space-between" mt={2}>
                     <Button
                       component={Link}
                       to={`/blogs/${blog.id}`}
                       color="secondary"
                       size="small"
-                      sx={{ mr: 1 }}
                     >
                       Read More
                     </Button>
@@ -112,6 +128,15 @@ const MyBlogs = () => {
                       color="primary"
                     >
                       Edit
+                    </Button>
+
+                    <Button
+                      onClick={() => handleDelete(blog.id)}
+                      variant="outlined"
+                      color="error"
+                      size="small"
+                    >
+                      Delete
                     </Button>
                   </Box>
                 </CardContent>
