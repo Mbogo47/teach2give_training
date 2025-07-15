@@ -50,7 +50,6 @@ const SignUp = () => {
       });
       toast.success("User created successful");
       navigate("/signin");
-      console.log(res);
     } catch (err: any) {
       const message =
         err.response?.data?.error || err.message || "Login failed";
@@ -144,7 +143,6 @@ const SignUp = () => {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
-            disabled={loading}
           >
             {loading ? (
               <CircularProgress size={24} color="inherit" />

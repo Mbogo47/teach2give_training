@@ -12,6 +12,7 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { domain } from "../utils/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthContext";
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -20,6 +21,7 @@ const SignIn = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +33,7 @@ const SignIn = () => {
 
     const { identifier, password } = form;
 
-    if (!form.identifier || !form.password) {
+    if (!identifier || !password) {
       toast.error("Please enter both username/email and password.");
       return;
     }
@@ -42,7 +44,10 @@ const SignIn = () => {
         identifier,
         password,
       });
+
       localStorage.setItem("token", res.data.token);
+      login(res.data.token);
+
       toast.success("Login successful");
       navigate("/blogs");
     } catch (err: any) {

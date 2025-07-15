@@ -16,24 +16,27 @@ datasource db {
 
 // Models
 model User {
-  id String @id @default(uuid())
- emailAddress          String   @unique
-  username       String   @unique
-  password       String
-  lastName           String
-  firstName           String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  blogs          Blog[]
+  id           String   @id @default(uuid())
+  emailAddress String   @unique
+  username     String   @unique
+  password     String
+  firstName    String
+  lastName     String
+  profileImage String?  
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  blogs        Blog[]
 }
 
 model Blog {
-   id String @id @default(uuid())
-  title       String
-  content     String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  isDeleted     Boolean  @default(false)
-  authorId    String
-  author      User     @relation(fields: [authorId], references: [id])
+  id              String   @id @default(uuid())
+  title           String
+  synopsis        String   
+  content         String
+  featuredImageUrl String 
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  isDeleted       Boolean  @default(false)
+  authorId        String
+  author          User     @relation(fields: [authorId], references: [id])
 }
