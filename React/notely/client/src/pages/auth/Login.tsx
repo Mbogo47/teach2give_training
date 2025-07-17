@@ -1,11 +1,65 @@
-import { Box, TextField, Button, Typography, Paper } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Paper,
+  CircularProgress,
+} from "@mui/material";
+import { domain } from "../../components/utils/utils";
+import { useReducer } from "react";
+import {
+  loginReducer,
+  initialLoginFormState,
+} from "../../reducers/loginReducer";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const [form, dispatch] = useReducer(loginReducer, initialLoginFormState);
+  const navigate = useNavigate();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: "UPDATE_FIELD",
+      field: e.target.name as "identifier" | "password",
+      value: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch({ type: "SUBMIT_START" });
+
+    const { identifier, password } = form;
+
+    try {
+      await axios.post(`${domain}/auth/login`, {
+        identifier,
+        password,
+      });
+
+      dispatch({ type: "SUBMIT_SUCCESS" });
+      toast.success("Login successful!");
+      navigate("/notes");
+    } catch (error: any) {
+      dispatch({
+        type: "SUBMIT_FAILURE",
+        error: "",
+      });
+
+      const message =
+        error.response?.data?.error || error.message || "Login failed";
+      toast.error(message);
+    }
+  };
+
   return (
     <Paper
       elevation={3}
       sx={{
-        mt: 2,
+        mt: 4,
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         gap: 2,
@@ -17,7 +71,7 @@ const Login = () => {
         overflow: "hidden",
       }}
     >
-      {/* Left side - Image */}
+      {/* Left - Image */}
       <Box
         sx={{
           flex: 1,
@@ -41,7 +95,7 @@ const Login = () => {
         />
       </Box>
 
-      {/* Right side - Form */}
+      {/* Right - Form */}
       <Box
         sx={{
           flex: 1,
@@ -53,7 +107,6 @@ const Login = () => {
           borderRadius: 0.8,
         }}
       >
-        {/* Logo */}
         <Box display="flex" justifyContent="center" mb={2}>
           <Box
             component="img"
@@ -63,22 +116,51 @@ const Login = () => {
           />
         </Box>
 
-        {/* Title */}
         <Typography variant="h6" gutterBottom align="center">
           Sign In to Notely
         </Typography>
 
-        {/* Form */}
-        <form>
-          <TextField fullWidth label="Email or Username" margin="normal" />
+        <form onSubmit={handleSubmit}>
+          <TextField
+            fullWidth
+            label="Email or Username"
+            name="identifier"
+            value={form.identifier}
+            onChange={handleChange}
+            margin="normal"
+            disabled={form.loading}
+          />
           <TextField
             fullWidth
             label="Password"
-            margin="normal"
+            name="password"
             type="password"
+            value={form.password}
+            onChange={handleChange}
+            margin="normal"
+            disabled={form.loading}
           />
-          <Button fullWidth variant="contained" color="primary" sx={{ mt: 2 }}>
-            Sign In
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            sx={{ mt: 2 }}
+            type="submit"
+            disabled={form.loading}
+          >
+            {form.loading ? (
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                gap={1}
+              >
+                <CircularProgress size={20} color="inherit" />
+                Signing in...
+              </Box>
+            ) : (
+              "Sign In"
+            )}
           </Button>
         </form>
       </Box>

@@ -1,7 +1,8 @@
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Login from "./pages/auth/Login";
-import SignUp from "./pages/auth/Signup";
+import SignUp from "./pages/auth/SignUp";
+import NotFound from "./pages/notfound/NotFound";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,11 +18,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          {/* <Route path="/*" element={<NotFound />} /> */}
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </Box>
 
-      <ToastContainer />
+      <ToastContainer
+        toastStyle={{ backgroundColor: "#2A2B3C", color: "#E4C1F9" }}
+      />
     </>
   );
 }
