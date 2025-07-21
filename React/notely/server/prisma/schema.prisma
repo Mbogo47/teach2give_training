@@ -31,11 +31,11 @@ model Note {
   title           String
   synopsis        String
   content         String   
-  notesImage      String?
+  notesImage      String[]
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   isDeleted       Boolean  @default(false)
-  isPublic        Boolean  @default(false) 
+  isPublic        Boolean  @default(true) 
   authorId        String
   author          User     @relation(fields: [authorId], references: [id])
 }
