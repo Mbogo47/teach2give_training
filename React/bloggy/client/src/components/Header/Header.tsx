@@ -8,9 +8,9 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Typography,
+  Link as MuiLink,
 } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
@@ -38,30 +38,38 @@ const Header = () => {
     handleClose();
   };
 
- 
-
   return (
     <AppBar position="static">
       <Container>
         <Toolbar>
-          <Typography variant="h5" sx={{ flexGrow: 1 }}>
-            Bloggy
-          </Typography>
+          <MuiLink
+            component={RouterLink}
+            to="/"
+            color="inherit"
+            sx={{
+              cursor: "pointer",
+              textDecoration: "none",
+              fontWeight: "bold",
+              fontSize: "1.25rem",
+              mr: 2,
+            }}
+          >
+            BlogIt
+          </MuiLink>
 
           {user ? (
             <>
-              <Button color="inherit" component={Link} to="/blogs">
+              <Button color="inherit" component={RouterLink} to="/blogs">
                 Blogs
               </Button>
-              <Button color="inherit" component={Link} to="/create-blogs">
+              <Button color="inherit" component={RouterLink} to="/create-blogs">
                 Create Blog
               </Button>
-              <Button color="inherit" component={Link} to="/my-blogs">
+              <Button color="inherit" component={RouterLink} to="/my-blogs">
                 My Blogs
               </Button>
 
               <IconButton onClick={handleAvatarClick} sx={{ ml: 2 }}>
-                {/* <Avatar src={getAvatarSrc()} alt={user.username} /> */}
                 <Avatar src={user?.profileImage || "/default-avatar.png"} />
               </IconButton>
 
@@ -76,13 +84,13 @@ const Header = () => {
             </>
           ) : (
             <Box sx={{ ml: "auto" }}>
-              <Button color="inherit" component={Link} to="/">
+              <Button color="inherit" component={RouterLink} to="/">
                 Home
               </Button>
-              <Button color="inherit" component={Link} to="/signin">
+              <Button color="inherit" component={RouterLink} to="/signin">
                 Sign In
               </Button>
-              <Button color="inherit" component={Link} to="/signup">
+              <Button color="inherit" component={RouterLink} to="/signup">
                 Sign Up
               </Button>
             </Box>
