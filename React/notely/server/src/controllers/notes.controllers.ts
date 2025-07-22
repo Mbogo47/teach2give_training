@@ -53,7 +53,7 @@ export const getAllNotes = async (
       },
       orderBy: { createdAt: "desc" },
     });
-    res.json(notes);
+    res.status(200).json(notes);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Something went wrong" });
@@ -152,7 +152,7 @@ export const softDeleteNote = async (
         isDeleted: true,
       },
     });
-    res.json({ message: "Note Deleted", deleteNote });
+    res.status(200).json({ message: "Note Deleted", deleteNote });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Something went wrong" });
