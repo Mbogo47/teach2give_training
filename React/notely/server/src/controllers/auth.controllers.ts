@@ -1,49 +1,41 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const client = new PrismaClient();
 
-export const registerUser = async (
-  req: Request,
-  res: Response,
-): Promise<void> => {
+export const registerUser = async (req: Request, res: Response) => {
   try {
-    const { firstName, lastName, emailAddress, username, password } = req.body;
-
-    if (!firstName || !lastName || !username || !emailAddress || !password) {
-      res.status(400).json({ error: "All fields required" });
-      return;
-    }
+    const { username, firstName, lastName, emailAddress, password } = req.body;
 
     const existingUser = await client.user.findFirst({
       where: {
-        OR: [{ emailAddress }, { username }],
+        OR: [{ username }, { emailAddress }],
       },
     });
 
     if (existingUser) {
-      res.status(400).json({ error: "Username or Email already exists" });
+      return res
+        .status(400)
+        .json({ error: "Username or email already in use" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await client.user.create({
+    const newUser = await client.user.create({
       data: {
+        username,
         firstName,
         lastName,
-        username,
         emailAddress,
         password: hashedPassword,
       },
     });
 
-    res.status(201).json({
-      message: "User created successfully",
-      user: {
-        id: user.id,
-      },
-    });
+    res.status(201).json({ message: "User registered", userId: newUser.id });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Something went wrong" });
@@ -51,35 +43,35 @@ export const registerUser = async (
 };
 
 // Login Logic
-export const loginUser = async (req: Request, res: Response): Promise<void> => {
+export const loginUser = async (req: Request, res: Response) => {
   try {
     const { identifier, password } = req.body;
+
     if (!password || !identifier) {
-      res.status(400).json({ error: "Username or Email required" });
+      res
+        .status(400)
+        .json({ error: "Username or email and password are required." });
       return;
     }
-
     const user = await client.user.findFirst({
       where: {
         OR: [{ username: identifier }, { emailAddress: identifier }],
       },
     });
-
     if (!user) {
-      res.status(401).json({ error: "User Not found" });
-      return;
+      return res.status(401).json({ error: "User not found" });
     }
 
-    const comparePassword = await bcrypt.compare(password, user.password);
-
-    if (!comparePassword) {
-      res.status(401).json({ error: "Invalid Password" });
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Invalid Password" });
     }
 
-    res.status(200).json({
-      message: "Login Successful",
-      user: { id: user.id },
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
+      expiresIn: "2h",
     });
+
+    res.status(200).json({ message: "Login successful", token });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Something went wrong" });
@@ -91,12 +83,21 @@ export const updateProfileInfo = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const userId = req.params.id;
-  const { firstName, lastName, username, avatarImage } = req.body;
-
   try {
+    const token = req.headers.authorization?.split(" ")[1];
+
+    if (!token) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      userId: string;
+    };
+
+    const { firstName, lastName, username, avatarImage } = req.body;
+
     const existingUser = await client.user.findUnique({
-      where: { id: userId },
+      where: { id: decoded.userId },
     });
 
     if (!existingUser) {
@@ -105,7 +106,7 @@ export const updateProfileInfo = async (
     }
 
     const updatedUser = await client.user.update({
-      where: { id: userId },
+      where: { id: decoded.userId },
       data: {
         firstName,
         lastName,
@@ -126,11 +127,23 @@ export const updatePassword = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const userId = req.params.id;
-  const { newPassword } = req.body;
-
   try {
-    const user = await client.user.findUnique({ where: { id: userId } });
+    const token = req.headers.authorization?.split(" ")[1];
+
+    if (!token) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      userId: string;
+    };
+
+    const { newPassword } = req.body;
+
+    const user = await client.user.findUnique({
+      where: { id: decoded.userId },
+    });
 
     if (!user || !user.password) {
       res.status(404).json({ error: "User not found" });
@@ -138,8 +151,9 @@ export const updatePassword = async (
     }
 
     const hashedPassword = await bcrypt.hash(newPassword, 10);
+
     await client.user.update({
-      where: { id: userId },
+      where: { id: decoded.userId },
       data: { password: hashedPassword },
     });
 

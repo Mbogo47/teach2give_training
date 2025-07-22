@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
-
+import jwt from "jsonwebtoken";
 const client = new PrismaClient();
 
 // HOME CONTROLLER
@@ -14,6 +14,19 @@ export const createNewNotes = async (
   res: Response,
 ): Promise<void> => {
   try {
+    const token = req.headers.authorization?.split(" ")[1];
+
+    if (!token) {
+      res.status(401).json({ error: "Missing token" });
+      return;
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      userId: string;
+    };
+
+    const authorId = decoded.userId;
+
     const { title, synopsis, content, notesImage = [] } = req.body;
 
     const newNote = await client.note.create({
@@ -22,9 +35,10 @@ export const createNewNotes = async (
         synopsis,
         content,
         notesImage,
-        authorId: "69f9a926-4096-4b4f-9c75-d25c65649315",
+        authorId: authorId,
       },
     });
+
     res.status(200).json({ message: "New note created", newNote });
   } catch (err) {
     console.error(err);
@@ -44,15 +58,12 @@ export const getAllNotes = async (
         author: {
           select: {
             id: true,
-            username: true,
-            emailAddress: true,
-            firstName: true,
-            password: true,
           },
         },
       },
       orderBy: { createdAt: "desc" },
     });
+
     res.status(200).json(notes);
   } catch (err) {
     console.error(err);
@@ -65,9 +76,9 @@ export const getSpecificNote = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const noteId = req.params.id;
-
   try {
+    const noteId = req.params.id;
+
     const note = await client.note.findUnique({
       where: { id: noteId },
       include: {
@@ -96,8 +107,19 @@ export const updateNote = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const noteId = req.params.id;
   try {
+    const noteId = req.params.id;
+
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) {
+      res.status(401).json({ error: "Missing token" });
+      return;
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      userId: string;
+    };
+
     const { title, content, synopsis, notesImage = [] } = req.body;
 
     const existingNote = await client.note.findUnique({
@@ -111,7 +133,7 @@ export const updateNote = async (
     const updateNote = client.note.update({
       where: {
         id: noteId,
-        authorId: "69f9a926-4096-4b4f-9c75-d25c65649315",
+        authorId: decoded.userId,
       },
       data: {
         title,
@@ -133,8 +155,18 @@ export const softDeleteNote = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const noteId = req.params.id;
   try {
+    const noteId = req.params.id;
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) {
+      res.status(401).json({ error: "Missing token" });
+      return;
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      userId: string;
+    };
+
     const existingNote = await client.note.findUnique({
       where: { id: noteId },
     });
@@ -146,7 +178,7 @@ export const softDeleteNote = async (
     const deleteNote = await client.note.update({
       where: {
         id: noteId,
-        authorId: "69f9a926-4096-4b4f-9c75-d25c65649315",
+        authorId: decoded.userId,
       },
       data: {
         isDeleted: true,

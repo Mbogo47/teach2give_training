@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
-
+import jwt from "jsonwebtoken";
 const client = new PrismaClient();
 
 // GET TRASH
@@ -22,6 +22,7 @@ export const getAllTrash = async (
           },
         },
       },
+
       orderBy: { createdAt: "desc" },
     });
 
@@ -37,9 +38,19 @@ export const restoreFromTrash = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const noteId = req.params.id;
-
   try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) {
+      res.status(401).json({ error: "Missing token" });
+      return;
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      userId: string;
+    };
+
+    const noteId = req.params.id;
+
     const existingNote = await client.note.findUnique({
       where: { id: noteId },
     });
@@ -52,7 +63,7 @@ export const restoreFromTrash = async (
     const restoreNote = await client.note.update({
       where: {
         id: noteId,
-        authorId: "69f9a926-4096-4b4f-9c75-d25c65649315",
+        authorId: decoded.userId,
       },
       data: {
         isDeleted: false,
