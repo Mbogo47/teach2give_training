@@ -6,19 +6,22 @@ import {
   Paper,
   CircularProgress,
 } from "@mui/material";
-import { domain } from "../../components/utils/utils";
 import { useReducer } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { domain } from "../../components/utils/utils";
+import { loginSuccess } from "../../store/authSlice";
 import {
   loginReducer,
   initialLoginFormState,
 } from "../../reducers/loginReducer";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const Login = () => {
   const [form, dispatch] = useReducer(loginReducer, initialLoginFormState);
   const navigate = useNavigate();
+  const reduxDispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
@@ -35,11 +38,14 @@ const Login = () => {
     const { identifier, password } = form;
 
     try {
-      await axios.post(`${domain}/auth/login`, {
+      const res = await axios.post(`${domain}/auth/login`, {
         identifier,
         password,
       });
 
+      const { token, user } = res.data;
+
+      reduxDispatch(loginSuccess({ token, user }));
       dispatch({ type: "SUBMIT_SUCCESS" });
       toast.success("Login successful!");
       navigate("/notes");
