@@ -85,3 +85,67 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ error: "Something went wrong" });
   }
 };
+
+// UPDATE USER
+export const updateProfileInfo = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  const userId = req.params.id;
+  const { firstName, lastName, username, avatarImage } = req.body;
+
+  try {
+    const existingUser = await client.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!existingUser) {
+      res.status(404).json({ error: "User not found" });
+      return;
+    }
+
+    const updatedUser = await client.user.update({
+      where: { id: userId },
+      data: {
+        firstName,
+        lastName,
+        username,
+        avatarImage,
+      },
+    });
+
+    res.status(200).json({ message: "User profile updated", updatedUser });
+  } catch (err) {
+    console.error("Error updating user profile:", err);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+// UPDATE PASSWORD
+export const updatePassword = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  const userId = req.params.id;
+  const { newPassword } = req.body;
+
+  try {
+    const user = await client.user.findUnique({ where: { id: userId } });
+
+    if (!user || !user.password) {
+      res.status(404).json({ error: "User not found" });
+      return;
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await client.user.update({
+      where: { id: userId },
+      data: { password: hashedPassword },
+    });
+
+    res.status(200).json({ message: "Password updated successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to update password" });
+  }
+};
