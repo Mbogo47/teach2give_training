@@ -18,7 +18,7 @@ import {
   initialLoginFormState,
 } from "../../reducers/loginReducer";
 
-const Login = () => {
+const Login: React.FC = () => {
   const [form, dispatch] = useReducer(loginReducer, initialLoginFormState);
   const navigate = useNavigate();
   const reduxDispatch = useDispatch();
