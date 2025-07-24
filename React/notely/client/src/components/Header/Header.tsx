@@ -5,43 +5,48 @@ import {
   Toolbar,
   Box,
   Button,
-  Avatar,
-  IconButton,
-  Menu,
-  MenuItem,
+  Typography,
 } from "@mui/material";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { logout } from "../../store/authSlice";
+import { useEffect } from "react";
+const friendlyMessages = [
+  "Hope you're having a fantastic day!",
+  "Glad to see you back!",
+  "Let’s make today productive!",
+  "You’ve got this 💪",
+  "Let’s crush some goals today!",
+  "Feeling awesome? You should! 😄",
+  "Keep up the great work!",
+  "Your energy is contagious! ⚡️",
+  "Let's do something amazing today ✨",
+  "Take a deep breath and own the day 🌟",
+  "Great things are coming your way!",
+  "Remember to take breaks and stay hydrated 💧",
+  "You're doing better than you think!",
+  "Every small step counts 🚀",
+  "You're unstoppable today 🔥",
+  "Welcome back, superstar 🌠",
+  "Ready to make an impact?",
+  "It's your time to shine 🌞",
+  "One step closer to your goals!",
+  "Grateful to have you here 🙌",
+];
 
 const Header = () => {
   const { user } = useSelector((state: RootState) => state.auth);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [welcomeMessage, setWelcomeMessage] = useState<string | null>(null);
 
-  const handleAvatarClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleProfile = () => {
-    navigate("/profile");
-    handleClose();
-  };
-
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate("/");
-    handleClose();
-  };
+  useEffect(() => {
+    if (user && !welcomeMessage) {
+      const random =
+        friendlyMessages[Math.floor(Math.random() * friendlyMessages.length)];
+      setWelcomeMessage(random);
+    }
+  }, [user, welcomeMessage]);
 
   return (
     <AppBar position="static">
@@ -70,39 +75,15 @@ const Header = () => {
 
           {/* Right: Nav buttons */}
           {user ? (
-            <Box>
-              <Button color="secondary" component={RouterLink} to="/notes">
-                Notes
-              </Button>
-              <IconButton onClick={handleAvatarClick} sx={{ ml: 2 }}>
-                <Avatar
-                  src={user?.avatarImage || undefined}
-                  sx={{
-                    color: !user?.avatarImage ? "secondary.main" : undefined,
-                    border: !user?.avatarImage ? "2px solid" : undefined,
-                    borderColor: !user?.avatarImage
-                      ? "primary.main"
-                      : undefined,
-                    bgcolor: !user?.avatarImage
-                      ? "background.paper"
-                      : undefined,
-                  }}
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
+              {welcomeMessage && (
+                <Typography
+                  variant="subtitle1"
+                  sx={{ mt: 1, color: "#E4C1F9" }}
                 >
-                  {!user?.avatarImage &&
-                    `${user?.firstName?.[0] ?? ""}${
-                      user?.lastName?.[0] ?? ""
-                    }`.toUpperCase()}
-                </Avatar>
-              </IconButton>
-
-              <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleProfile}>Profile</MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
+                  {welcomeMessage}
+                </Typography>
+              )}
             </Box>
           ) : (
             <Box>

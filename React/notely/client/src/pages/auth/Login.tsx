@@ -48,7 +48,7 @@ const Login: React.FC = () => {
       reduxDispatch(loginSuccess({ token, user }));
       dispatch({ type: "SUBMIT_SUCCESS" });
       toast.success("Login successful!");
-      navigate("/notes");
+      navigate("/dashboard");
     } catch (error: any) {
       dispatch({
         type: "SUBMIT_FAILURE",

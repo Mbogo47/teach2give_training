@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Login from "./pages/auth/Login";
@@ -9,6 +10,7 @@ import SignUp from "./pages/auth/SignUp";
 import NotFound from "./pages/notfound/NotFound";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoutes";
 import Notes from "./pages/notes/Notes";
+import DashboardLayout from "./pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -21,14 +23,24 @@ function App() {
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/*" element={<NotFound />} />
+
+          {/* Entire dashboard layout wraps all nested routes */}
           <Route
-            path="/notes"
+            path="/dashboard"
             element={
               <ProtectedRoute>
-                <Notes />
+                <DashboardLayout />
               </ProtectedRoute>
             }
-          />
+          >
+            {/* Nested dashboard routes go here */}
+            <Route index element={<Navigate to="notes" replace />} />
+            <Route path="notes" element={<Notes />} />
+            {/* <Route path="create" element={<CreateNotePage />} />
+            <Route path="my-notes" element={<MyNotesPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+            */}
+          </Route>
         </Routes>
       </Box>
 
