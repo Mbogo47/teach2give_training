@@ -19,7 +19,7 @@ interface Note {
   title: string;
   synopsis: string;
   content: string;
-  notesImage: string;
+  notesImage: string[];
   author: {
     id: string;
     username: string;
@@ -91,7 +91,7 @@ const Notes: React.FC = () => {
               <CardMedia
                 component="img"
                 height="140"
-                image={note.notesImage}
+                image={note.notesImage[0]}
                 alt={note.title}
               />
             )}

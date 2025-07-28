@@ -44,7 +44,7 @@ const Login: React.FC = () => {
       });
 
       const { token, user } = res.data;
-
+      localStorage.setItem("token", token);
       reduxDispatch(loginSuccess({ token, user }));
       dispatch({ type: "SUBMIT_SUCCESS" });
       toast.success("Login successful!");

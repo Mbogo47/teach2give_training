@@ -11,6 +11,7 @@ import NotFound from "./pages/notfound/NotFound";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoutes";
 import Notes from "./pages/notes/Notes";
 import DashboardLayout from "./pages/Dashboard/Dashboard";
+import CreateNotes from "./pages/notes/CreateNotes";
 
 function App() {
   return (
@@ -36,10 +37,9 @@ function App() {
             {/* Nested dashboard routes go here */}
             <Route index element={<Navigate to="notes" replace />} />
             <Route path="notes" element={<Notes />} />
-            {/* <Route path="create" element={<CreateNotePage />} />
-            <Route path="my-notes" element={<MyNotesPage />} />
-            <Route path="profile" element={<ProfilePage />} />
-            */}
+            <Route path="create" element={<CreateNotes />} />
+            {/* <Route path="my-notes" element={<MyNotesPage />} /> */}
+            {/* <Route path="profile" element={<ProfilePage />} /> */}
           </Route>
         </Routes>
       </Box>

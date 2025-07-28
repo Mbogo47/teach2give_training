@@ -90,11 +90,16 @@ const Header = () => {
               <Button color="secondary" component={RouterLink} to="/">
                 Home
               </Button>
-              <Button color="secondary" component={RouterLink} to="/signup">
-                Sign Up
-              </Button>
               <Button color="secondary" component={RouterLink} to="/signin">
                 Sign In
+              </Button>
+              <Button
+                color="secondary"
+                component={RouterLink}
+                to="/signup"
+                variant="contained"
+              >
+                Sign Up
               </Button>
             </Box>
           )}

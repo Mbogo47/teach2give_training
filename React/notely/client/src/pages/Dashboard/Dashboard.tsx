@@ -9,6 +9,7 @@ import {
   DialogActions,
   Button,
   Avatar,
+  Divider,
 } from "@mui/material";
 import { NoteAdd, Notes, AssignmentInd } from "@mui/icons-material";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -30,15 +31,16 @@ const DashboardLayout: React.FC = () => {
   const handleLogoutClick = () => setLogoutDialogOpen(true);
   const handleLogoutConfirm = () => {
     dispatch(logout());
+    localStorage.removeItem("token");
     navigate("/");
     setLogoutDialogOpen(false);
   };
   const handleLogoutCancel = () => setLogoutDialogOpen(false);
 
   const navItems = [
-    { to: "/notes", icon: <Notes />, label: "All Notes" },
-    { to: "/create", icon: <NoteAdd />, label: "Create Note" },
-    { to: "/my-notes", icon: <AssignmentInd />, label: "My Notes" },
+    { to: "/dashboard/notes", icon: <Notes />, label: "All Notes" },
+    { to: "/dashboard/create", icon: <NoteAdd />, label: "Create Note" },
+    { to: "/dashboard/my-notes", icon: <AssignmentInd />, label: "My Notes" },
   ];
 
   return (
@@ -112,21 +114,40 @@ const DashboardLayout: React.FC = () => {
       <Dialog
         open={logoutDialogOpen}
         onClose={handleLogoutCancel}
-        PaperProps={{
-          sx: {
-            backdropFilter: "blur(8px)",
-            backgroundColor: "#1A1B26",
-            color: "#fff",
+        slotProps={{
+          paper: {
+            sx: {
+              backdropFilter: "blur(8px)",
+              backgroundColor: "#1A1B26",
+              color: "#fff",
+            },
           },
         }}
       >
-        <DialogTitle>Confirm Logout</DialogTitle>
-        <DialogContent sx={{ textAlign: "center", mt: 4, fontSize: "1.2rem" }}>
+        <DialogTitle
+          sx={{
+            textAlign: "center",
+            fontSize: "2rem",
+            textTransform: "uppercase",
+          }}
+        >
+          Confirm Logout
+        </DialogTitle>
+        <Divider sx={{ width: "100%", my: 1 }} />
+        <DialogContent sx={{ textAlign: "center", fontSize: "1.2rem" }}>
           Are you sure you want to log out?
         </DialogContent>
-        <DialogActions sx={{ justifyContent: "center", pb: 4 }}>
-          <Button onClick={handleLogoutCancel}>Cancel</Button>
-          <Button color="error" onClick={handleLogoutConfirm}>
+        <DialogActions
+          sx={{ justifyContent: "space-between", pb: 4, m: [0, 2] }}
+        >
+          <Button onClick={handleLogoutCancel} variant="contained">
+            Cancel
+          </Button>
+          <Button
+            color="error"
+            onClick={handleLogoutConfirm}
+            variant="contained"
+          >
             Logout
           </Button>
         </DialogActions>
