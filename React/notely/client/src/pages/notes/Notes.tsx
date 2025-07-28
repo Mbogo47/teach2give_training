@@ -76,7 +76,7 @@ const Notes: React.FC = () => {
     );
   }
   return (
-    <Container sx={{ mt: 4 }}>
+    <Container sx={{ mt: 2 }}>
       <Typography variant="h4" gutterBottom>
         All Notes
       </Typography>

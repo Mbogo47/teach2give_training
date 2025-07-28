@@ -36,13 +36,6 @@ const CreateNotes: React.FC = () => {
     const token = localStorage.getItem("token");
     console.log("TOKEN BEING SENT:", token);
     try {
-      //  await axios.post(`${domain}/notes`, formData, {
-      //    headers: {
-      //      Authorization: `Bearer ${token}`,
-      //      "Content-Type": "multipart/form-data",
-      //    },
-      //  });
-
       const token = localStorage.getItem("token");
 
       if (!token) {

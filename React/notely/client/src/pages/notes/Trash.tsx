@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   Container,
   Card,
@@ -10,10 +10,7 @@ import {
   Button,
   IconButton,
 } from "@mui/material";
-import {
-  ModeEditOutlineRounded,
-  DeleteOutlineRounded,
-} from "@mui/icons-material";
+import { RestoreFromTrash } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import { domain } from "../../components/utils/utils";
 import { Link } from "react-router-dom";
@@ -33,12 +30,10 @@ interface Note {
   };
 }
 
-const MyNotes: React.FC = () => {
-  const queryClient = useQueryClient();
-
-  const fetchMyNotes = async () => {
+const Trash: React.FC = () => {
+  const fetchDeletedNotes = async () => {
     const token = localStorage.getItem("token");
-    const res = await axios.get(`${domain}/my-notes`, {
+    const res = await axios.get(`${domain}/notes/trash`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -54,10 +49,10 @@ const MyNotes: React.FC = () => {
     error,
   } = useQuery<Note[]>({
     queryKey: ["my-notes"],
-    queryFn: fetchMyNotes,
+    queryFn: fetchDeletedNotes,
   });
 
-  const handleDeleteNote = async (id: string) => {
+  const handleRestoreNote = async (id: string) => {
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -67,8 +62,8 @@ const MyNotes: React.FC = () => {
 
     try {
       await axios.patch(
-        `${domain}/notes/${id}`,
-        { isDeleted: true },
+        `${domain}/notes/restore/${id}`,
+        { isDeleted: false },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,13 +71,12 @@ const MyNotes: React.FC = () => {
         },
       );
 
-      toast.success("Note deleted successfully");
-      queryClient.invalidateQueries({ queryKey: ["my-notes"] });
+      toast.success("Note Restored successfully");
     } catch (err: any) {
       if (err.response?.status === 401) {
         toast.error("Session expired. Please log in again.");
       } else {
-        toast.error("Failed to delete note");
+        toast.error("Failed to restore note");
       }
       console.error(err);
     }
@@ -104,7 +98,7 @@ const MyNotes: React.FC = () => {
   }
 
   if (isError) {
-    toast.error("Failed to fetch notes");
+    toast.error("Failed to fetch deleted notes");
     console.error(error);
     return (
       <Box mt={4} textAlign="center">
@@ -116,15 +110,15 @@ const MyNotes: React.FC = () => {
   if (!notes || notes.length === 0) {
     return (
       <Box mt={4} textAlign="center">
-        <Typography>No notes found.</Typography>
+        <Typography>No notes deleted.</Typography>
       </Box>
     );
   }
 
   return (
-    <Container sx={{ mt: 2 }}>
+    <Container sx={{ mt: 0.5 }}>
       <Typography variant="h4" gutterBottom>
-        My Notes
+        Deleted Notes
       </Typography>
       <Box
         display="grid"
@@ -156,14 +150,8 @@ const MyNotes: React.FC = () => {
                   Read More
                 </Button>
                 <Box>
-                  <IconButton
-                    component={Link}
-                    to={`/dashboard/edit/${note.id}`}
-                  >
-                    <ModeEditOutlineRounded fontSize="small" />
-                  </IconButton>
-                  <IconButton onClick={() => handleDeleteNote(note.id)}>
-                    <DeleteOutlineRounded fontSize="small" color="error" />
+                  <IconButton onClick={() => handleRestoreNote(note.id)}>
+                    <RestoreFromTrash fontSize="small" />
                   </IconButton>
                 </Box>
               </Box>
@@ -175,4 +163,4 @@ const MyNotes: React.FC = () => {
   );
 };
 
-export default MyNotes;
+export default Trash;

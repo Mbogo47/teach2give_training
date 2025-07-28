@@ -49,7 +49,7 @@ const DashboardLayout: React.FC = () => {
     {
       to: "/dashboard/trash",
       icon: <DeleteOutlineRounded />,
-      label: "My Notes",
+      label: "Deleted Notes",
     },
   ];
 

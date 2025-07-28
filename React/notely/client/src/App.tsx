@@ -13,6 +13,8 @@ import Notes from "./pages/notes/Notes";
 import MyNotes from "./pages/notes/MyNotes";
 import DashboardLayout from "./pages/Dashboard/Dashboard";
 import CreateNotes from "./pages/notes/CreateNotes";
+import EditNote from "./pages/notes/EditNote";
+import Trash from "./pages/notes/Trash";
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
             <Route path="notes" element={<Notes />} />
             <Route path="create" element={<CreateNotes />} />
             <Route path="my-notes" element={<MyNotes />} />
+            <Route path="edit/:id" element={<EditNote />} />
+            <Route path="trash" element={<Trash />} />
             {/* <Route path="profile" element={<ProfilePage />} /> */}
           </Route>
         </Routes>
