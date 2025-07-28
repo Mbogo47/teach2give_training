@@ -10,6 +10,7 @@ import SignUp from "./pages/auth/SignUp";
 import NotFound from "./pages/notfound/NotFound";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoutes";
 import Notes from "./pages/notes/Notes";
+import MyNotes from "./pages/notes/MyNotes";
 import DashboardLayout from "./pages/Dashboard/Dashboard";
 import CreateNotes from "./pages/notes/CreateNotes";
 
@@ -34,11 +35,11 @@ function App() {
               </ProtectedRoute>
             }
           >
-            {/* Nested dashboard routes go here */}
+            {/* Nested dashboard routes */}
             <Route index element={<Navigate to="notes" replace />} />
             <Route path="notes" element={<Notes />} />
             <Route path="create" element={<CreateNotes />} />
-            {/* <Route path="my-notes" element={<MyNotesPage />} /> */}
+            <Route path="my-notes" element={<MyNotes />} />
             {/* <Route path="profile" element={<ProfilePage />} /> */}
           </Route>
         </Routes>

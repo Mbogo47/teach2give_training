@@ -11,7 +11,12 @@ import {
   Avatar,
   Divider,
 } from "@mui/material";
-import { NoteAdd, Notes, AssignmentInd } from "@mui/icons-material";
+import {
+  NoteAdd,
+  Notes,
+  AssignmentInd,
+  DeleteOutlineRounded,
+} from "@mui/icons-material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,6 +46,11 @@ const DashboardLayout: React.FC = () => {
     { to: "/dashboard/notes", icon: <Notes />, label: "All Notes" },
     { to: "/dashboard/create", icon: <NoteAdd />, label: "Create Note" },
     { to: "/dashboard/my-notes", icon: <AssignmentInd />, label: "My Notes" },
+    {
+      to: "/dashboard/trash",
+      icon: <DeleteOutlineRounded />,
+      label: "My Notes",
+    },
   ];
 
   return (

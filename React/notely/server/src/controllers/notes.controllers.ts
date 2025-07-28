@@ -1,7 +1,13 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
+import { uploadImageToAzure } from "../utils/azureUtils";
+import { Express } from "express";
+
 const client = new PrismaClient();
+interface MulterRequest extends Request {
+  files?: Express.Multer.File[];
+}
 
 // HOME CONTROLLER
 export const Home = (_req: Request, res: Response) => {
@@ -9,37 +15,41 @@ export const Home = (_req: Request, res: Response) => {
 };
 
 // CREATE NEW NOTE CONTROLLER
-export const createNewNotes = async (
-  req: Request,
-  res: Response,
-): Promise<void> => {
+// export const createNewNotes = async (req: MulterRequest, res: Response): Promise<void> => {
+export const createNewNotes = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.split(" ")[1];
+    const token = req.headers.authorization?.split(" ")[1]?.trim();
+    if (!token) return res.status(401).json({ error: "Missing token" });
 
-    if (!token) {
-      res.status(401).json({ error: "Missing token" });
-      return;
-    }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {
       userId: string;
     };
-
     const authorId = decoded.userId;
 
-    const { title, synopsis, content, notesImage = [] } = req.body;
+    const { title, synopsis, content } = req.body;
+
+    let imageUrls: string[] = [];
+
+    if (Array.isArray(req.files)) {
+      const uploads = await Promise.all(
+        req.files.map((file) =>
+          uploadImageToAzure(file.buffer, file.originalname),
+        ),
+      );
+      imageUrls = uploads;
+    }
 
     const newNote = await client.note.create({
       data: {
         title,
         synopsis,
         content,
-        notesImage,
-        authorId: authorId,
+        notesImage: imageUrls,
+        authorId,
       },
     });
 
-    res.status(200).json({ message: "New note created", newNote });
+    res.status(201).json({ message: "New note created", newNote });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Something went wrong" });
@@ -58,6 +68,11 @@ export const getAllNotes = async (
         author: {
           select: {
             id: true,
+            username: true,
+            emailAddress: true,
+            firstName: true,
+            lastName: true,
+            avatarImage: true,
           },
         },
       },
@@ -85,6 +100,11 @@ export const getSpecificNote = async (
         author: {
           select: {
             id: true,
+            username: true,
+            emailAddress: true,
+            firstName: true,
+            lastName: true,
+            avatarImage: true,
           },
         },
       },
@@ -98,6 +118,48 @@ export const getSpecificNote = async (
     res.status(200).json(note);
   } catch (err) {
     console.error(err);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+// Get my notes
+export const getMyNotes = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) {
+    res.status(401).json({ error: "Missing token" });
+    return;
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      userId: string;
+    };
+    const userId = decoded.userId;
+
+    const notes = await client.note.findMany({
+      where: {
+        authorId: userId,
+        isDeleted: false,
+      },
+      orderBy: { createdAt: "desc" },
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true,
+            emailAddress: true,
+            firstName: true,
+          },
+        },
+      },
+    });
+
+    res.json(notes);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Something went wrong" });
   }
 };
