@@ -18,7 +18,7 @@ noteRouters.get("/notes", getAllNotes);
 noteRouters.post("/notes", upload.single("notesImage"), createNewNotes);
 noteRouters.get("/notes/:id", getSpecificNote);
 noteRouters.patch("/notes/:id", softDeleteNote);
-noteRouters.put("/notes/:id", updateNote);
+noteRouters.put("/notes/:id", upload.single("notesImage"), updateNote);
 noteRouters.get("/my-notes", getMyNotes);
 
 export default noteRouters;

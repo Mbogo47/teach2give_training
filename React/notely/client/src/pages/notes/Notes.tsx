@@ -5,7 +5,7 @@ import {
   Card,
   CardContent,
   Typography,
-  CardMedia,
+  // CardMedia,
   Box,
   Button,
 } from "@mui/material";
@@ -87,14 +87,14 @@ const Notes: React.FC = () => {
       >
         {notes.map((note) => (
           <Card key={note.id}>
-            {note.notesImage && (
+            {/* {note.notesImage && (
               <CardMedia
                 component="img"
                 height="140"
                 image={note.notesImage[0]}
                 alt={note.title}
               />
-            )}
+            )} */}
             <CardContent>
               <Typography variant="h6" gutterBottom>
                 {note.title}

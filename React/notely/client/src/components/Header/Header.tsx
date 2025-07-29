@@ -10,8 +10,8 @@ import {
 import { Link as RouterLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+
 const friendlyMessages = [
   "Hope you're having a fantastic day!",
   "Glad to see you back!",
@@ -49,7 +49,7 @@ const Header = () => {
   }, [user, welcomeMessage]);
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box display="flex" alignItems="center">

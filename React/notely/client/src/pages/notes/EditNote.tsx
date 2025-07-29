@@ -1,19 +1,22 @@
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Paper, Typography } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 import { domain } from "../../components/utils/utils";
 import {
   editNoteReducer,
   initialEditNoteState,
 } from "../../reducers/EditNotesReducer";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 const EditNote: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(editNoteReducer, initialEditNoteState);
+  const [previewHtml, setPreviewHtml] = useState("");
 
   const token = localStorage.getItem("token");
 
@@ -42,6 +45,19 @@ const EditNote: React.FC = () => {
       });
     }
   }, [data]);
+
+  useEffect(() => {
+    const convertMarkdown = async () => {
+      if (state.content) {
+        const html = await marked.parse(state.content);
+        setPreviewHtml(DOMPurify.sanitize(html));
+      } else {
+        setPreviewHtml("");
+      }
+    };
+
+    convertMarkdown();
+  }, [state.content]);
 
   const handleUpdate = async () => {
     try {
@@ -72,47 +88,48 @@ const EditNote: React.FC = () => {
     }
   };
 
-  if (isLoading) {
-    return <Typography>Loading...</Typography>;
-  }
-
-  if (isError) {
-    return <Typography color="error">Error loading note</Typography>;
-  }
+  if (isLoading) return <Typography>Loading...</Typography>;
+  if (isError) return <Typography color="error">Error loading note</Typography>;
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Edit Note
-      </Typography>
+    <Box sx={{ display: "flex", flexDirection: "row", gap: 2, padding: 2 }}>
+      {/* Form Section */}
+      <Paper
+        elevation={3}
+        sx={{ padding: 3, flex: 1, maxWidth: "50%", overflowY: "auto" }}
+      >
+        <Typography variant="h5" gutterBottom>
+          Edit Note
+        </Typography>
 
-      <Box display="flex" flexDirection="column" gap={2}>
-        <TextField
-          label="Title"
-          value={state.title}
-          onChange={(e) =>
-            dispatch({ type: "SET_TITLE", payload: e.target.value })
-          }
-          fullWidth
-        />
-        <TextField
-          label="Synopsis"
-          value={state.synopsis}
-          onChange={(e) =>
-            dispatch({ type: "SET_SYNOPSIS", payload: e.target.value })
-          }
-          fullWidth
-        />
-        <TextField
-          label="Content"
-          multiline
-          rows={6}
-          value={state.content}
-          onChange={(e) =>
-            dispatch({ type: "SET_CONTENT", payload: e.target.value })
-          }
-          fullWidth
-        />
+        <Box display="flex" flexDirection="column" gap={2}>
+          <TextField
+            label="Title"
+            value={state.title}
+            onChange={(e) =>
+              dispatch({ type: "SET_TITLE", payload: e.target.value })
+            }
+            fullWidth
+          />
+          <TextField
+            label="Synopsis"
+            value={state.synopsis}
+            onChange={(e) =>
+              dispatch({ type: "SET_SYNOPSIS", payload: e.target.value })
+            }
+            fullWidth
+          />
+          <TextField
+            label="Content"
+            multiline
+            minRows={6}
+            value={state.content}
+            onChange={(e) =>
+              dispatch({ type: "SET_CONTENT", payload: e.target.value })
+            }
+            fullWidth
+          />
+          {/* 
         <Button variant="outlined" component="label">
           Upload New Image
           <input
@@ -126,18 +143,36 @@ const EditNote: React.FC = () => {
               })
             }
           />
-        </Button>
+        </Button> */}
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleUpdate}
-          disabled={state.loading}
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleUpdate}
+            disabled={state.loading}
+          >
+            {state.loading ? "Updating..." : "Update Note"}
+          </Button>
+        </Box>
+      </Paper>
+
+      {/* Preview Section */}
+      {state.content && (
+        <Paper
+          elevation={3}
+          sx={{
+            padding: 3,
+            flex: 1,
+            maxWidth: "50%",
+          }}
         >
-          {state.loading ? "Updating..." : "Update Note"}
-        </Button>
-      </Box>
-    </Container>
+          <Typography variant="h6" gutterBottom>
+            Preview
+          </Typography>
+          <Box dangerouslySetInnerHTML={{ __html: previewHtml }} />
+        </Paper>
+      )}
+    </Box>
   );
 };
 

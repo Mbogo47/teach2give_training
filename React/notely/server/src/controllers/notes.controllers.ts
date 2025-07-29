@@ -15,7 +15,7 @@ export const Home = (_req: Request, res: Response) => {
 };
 
 // CREATE NEW NOTE CONTROLLER
-// export const createNewNotes = async (req: MulterRequest, res: Response): Promise<void> => {
+
 export const createNewNotes = async (req: Request, res: Response) => {
   try {
     const token = req.headers.authorization?.split(" ")[1]?.trim();
@@ -182,17 +182,29 @@ export const updateNote = async (
       userId: string;
     };
 
-    const { title, content, synopsis, notesImage = [] } = req.body;
+    const { title, content, synopsis } = req.body;
+
+    let imageUrls: string[] = [];
+
+    if (Array.isArray(req.files)) {
+      const uploads = await Promise.all(
+        req.files.map((file) =>
+          uploadImageToAzure(file.buffer, file.originalname),
+        ),
+      );
+      imageUrls = uploads;
+    }
 
     const existingNote = await client.note.findUnique({
       where: { id: noteId },
     });
+
     if (!existingNote || existingNote.isDeleted) {
       res.status(404).json({ error: "Note not found or has been deleted" });
       return;
     }
 
-    const updateNote = client.note.update({
+    const updatedNote = await client.note.update({
       where: {
         id: noteId,
         authorId: decoded.userId,
@@ -201,11 +213,11 @@ export const updateNote = async (
         title,
         content,
         synopsis,
-        notesImage,
+        ...(imageUrls.length > 0 && { notesImage: imageUrls }),
       },
     });
 
-    res.status(200).json({ message: "Updated Note successfully", updateNote });
+    res.status(200).json({ message: "Updated Note successfully", updatedNote });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Something went wrong" });
