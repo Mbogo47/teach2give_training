@@ -108,7 +108,7 @@ const Notes: React.FC = () => {
               <Box mt={2}>
                 <Button
                   component={Link}
-                  to={`/notes/${note.id}`}
+                  to={`/dashboard/note/${note.id}`}
                   variant="outlined"
                   size="small"
                 >

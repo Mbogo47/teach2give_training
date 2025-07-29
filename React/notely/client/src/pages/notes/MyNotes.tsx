@@ -149,7 +149,7 @@ const MyNotes: React.FC = () => {
               <Box mt={2} display="flex" justifyContent="space-between">
                 <Button
                   component={Link}
-                  to={`/notes/${note.id}`}
+                  to={`/dashboard/note/${note.id}`}
                   variant="outlined"
                   size="small"
                 >

@@ -15,6 +15,7 @@ import DashboardLayout from "./pages/Dashboard/Dashboard";
 import CreateNotes from "./pages/notes/CreateNotes";
 import EditNote from "./pages/notes/EditNote";
 import Trash from "./pages/notes/Trash";
+import NoteDetails from "./pages/notes/NoteDetails";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="create" element={<CreateNotes />} />
             <Route path="my-notes" element={<MyNotes />} />
             <Route path="edit/:id" element={<EditNote />} />
+            <Route path="note/:id" element={<NoteDetails />} />
             <Route path="trash" element={<Trash />} />
             {/* <Route path="profile" element={<ProfilePage />} /> */}
           </Route>
