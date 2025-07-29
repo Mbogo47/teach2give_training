@@ -7,27 +7,37 @@ interface ProfileState {
   loading: boolean;
 }
 
-type ProfileAction =
+export type ProfileAction =
   | { type: "SET_FIRSTNAME"; payload: string }
   | { type: "SET_LASTNAME"; payload: string }
   | { type: "SET_USERNAME"; payload: string }
   | { type: "SET_AVATAR"; payload: File | null }
   | { type: "SET_LOADING"; payload: boolean }
-  | { type: "RESET"; payload: ProfileState };
+  | {
+      type: "RESET";
+      payload: {
+        firstName: string;
+        lastName: string;
+        username: string;
+        emailAddress: string;
+        avatarImage: File | null;
+        loading: boolean;
+      };
+    };
 
-const initialProfileState: ProfileState = {
+export const initialProfileState: ProfileState = {
   firstName: "",
   lastName: "",
-  emailAddress: "",
   username: "",
+  emailAddress: "",
   avatarImage: null,
   loading: false,
 };
 
-const profileReducer = (
-  state: ProfileState,
+export const profileReducer = (
+  state: typeof initialProfileState,
   action: ProfileAction,
-): ProfileState => {
+) => {
   switch (action.type) {
     case "SET_FIRSTNAME":
       return { ...state, firstName: action.payload };
@@ -45,8 +55,6 @@ const profileReducer = (
       return state;
   }
 };
-
-export { profileReducer, initialProfileState };
 
 interface PasswordState {
   currentPassword: string;

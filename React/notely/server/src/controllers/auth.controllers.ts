@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { uploadImageToAzure } from "../utils/azureUtils";
 dotenv.config();
 
 const client = new PrismaClient();
@@ -101,11 +102,18 @@ export const updateProfileInfo = async (
       res.status(401).json({ error: "Unauthorized" });
       return;
     }
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
       userId: string;
     };
 
-    const { firstName, lastName, username, avatarImage } = req.body;
+    const { firstName, lastName, username } = req.body;
+    const avatarFile = req.file;
+
+    if (!firstName || !lastName || !username) {
+      res.status(400).json({ error: "Missing required fields" });
+      return;
+    }
 
     const existingUser = await client.user.findUnique({
       where: { id: decoded.userId },
@@ -116,13 +124,22 @@ export const updateProfileInfo = async (
       return;
     }
 
+    let avatarImageUrl = existingUser.avatarImage;
+
+    if (avatarFile) {
+      avatarImageUrl = await uploadImageToAzure(
+        avatarFile.buffer,
+        avatarFile.originalname,
+      );
+    }
+
     const updatedUser = await client.user.update({
       where: { id: decoded.userId },
       data: {
         firstName,
         lastName,
         username,
-        avatarImage,
+        avatarImage: avatarImageUrl,
       },
     });
 

@@ -2,12 +2,8 @@ import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
 import { uploadImageToAzure } from "../utils/azureUtils";
-import { Express } from "express";
 
 const client = new PrismaClient();
-interface MulterRequest extends Request {
-  files?: Express.Multer.File[];
-}
 
 // HOME CONTROLLER
 export const Home = (_req: Request, res: Response) => {
