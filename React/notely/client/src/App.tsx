@@ -16,6 +16,7 @@ import CreateNotes from "./pages/notes/CreateNotes";
 import EditNote from "./pages/notes/EditNote";
 import Trash from "./pages/notes/Trash";
 import NoteDetails from "./pages/notes/NoteDetails";
+import Profile from "./pages/auth/Profile";
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
             <Route path="edit/:id" element={<EditNote />} />
             <Route path="note/:id" element={<NoteDetails />} />
             <Route path="trash" element={<Trash />} />
-            {/* <Route path="profile" element={<ProfilePage />} /> */}
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </Box>

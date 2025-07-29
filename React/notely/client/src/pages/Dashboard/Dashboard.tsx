@@ -89,7 +89,7 @@ const DashboardLayout: React.FC = () => {
 
           {/* Avatar -> navigates to /profile */}
           <Tooltip title="Profile" placement="right" arrow>
-            <IconButton onClick={() => navigate("/profile")}>
+            <IconButton onClick={() => navigate("/dashboard/profile")}>
               <Avatar
                 src={user?.avatarImage || undefined}
                 sx={{

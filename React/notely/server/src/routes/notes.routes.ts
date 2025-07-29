@@ -13,7 +13,7 @@ const upload = multer();
 
 const noteRouters = Router();
 
-noteRouters.get("/", Home);
+noteRouters.get("/ping", Home);
 noteRouters.get("/notes", getAllNotes);
 noteRouters.post("/notes", upload.single("notesImage"), createNewNotes);
 noteRouters.get("/notes/:id", getSpecificNote);
