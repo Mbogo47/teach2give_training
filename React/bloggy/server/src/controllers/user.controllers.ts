@@ -128,6 +128,7 @@ export const getUserProfile = async (req: Request, res: Response) => {
       id: user.id,
       username: user.username,
       firstName: user.firstName,
+      lastName: user.lastName,
       emailAddress: user.emailAddress,
       blogCount: user.blogs.length,
     });
