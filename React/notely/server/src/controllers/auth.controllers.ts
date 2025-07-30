@@ -3,7 +3,8 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { uploadImageToAzure } from "../utils/azureUtils";
+// import { uploadImageToAzure } from "../utils/azureUtils";
+import { uploadImageToCloudinary } from "../utils/cloudinaryUtils";
 dotenv.config();
 
 const client = new PrismaClient();
@@ -127,7 +128,7 @@ export const updateProfileInfo = async (
     let avatarImageUrl = existingUser.avatarImage;
 
     if (avatarFile) {
-      avatarImageUrl = await uploadImageToAzure(
+      avatarImageUrl = await uploadImageToCloudinary(
         avatarFile.buffer,
         avatarFile.originalname,
       );

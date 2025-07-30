@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
-import { uploadImageToAzure } from "../utils/azureUtils";
+// import { uploadImageToAzure } from "../utils/azureUtils";
+import { uploadImageToCloudinary } from "../utils/cloudinaryUtils";
+
 
 const client = new PrismaClient();
 
@@ -29,7 +31,7 @@ export const createNewNotes = async (req: Request, res: Response) => {
     if (Array.isArray(req.files)) {
       const uploads = await Promise.all(
         req.files.map((file) =>
-          uploadImageToAzure(file.buffer, file.originalname),
+          uploadImageToCloudinary(file.buffer, file.originalname),
         ),
       );
       imageUrls = uploads;
@@ -185,7 +187,7 @@ export const updateNote = async (
     if (Array.isArray(req.files)) {
       const uploads = await Promise.all(
         req.files.map((file) =>
-          uploadImageToAzure(file.buffer, file.originalname),
+          uploadImageToCloudinary(file.buffer, file.originalname),
         ),
       );
       imageUrls = uploads;
