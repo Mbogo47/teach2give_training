@@ -4,6 +4,7 @@ import cors from "cors";
 import authRouters from "./routes/auth.routes";
 import noteRouters from "./routes/notes.routes";
 import trashRouters from "./routes/trash.routes";
+import countRouters from "./routes/count.routes";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use("/", countRouters);
 app.use("/", authRouters);
 app.use("/", trashRouters);
 app.use("/", noteRouters);

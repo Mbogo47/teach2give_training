@@ -1,12 +1,16 @@
 import {
   AppBar,
   Container,
-  Link as MuiLink,
   Toolbar,
   Box,
   Button,
   Typography,
+  IconButton,
+  Menu,
+  MenuItem,
+  Link as MuiLink,
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import { Link as RouterLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
@@ -37,8 +41,10 @@ const friendlyMessages = [
 
 const Header = () => {
   const { user } = useSelector((state: RootState) => state.auth);
-
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [welcomeMessage, setWelcomeMessage] = useState<string | null>(null);
+
+  const open = Boolean(anchorEl);
 
   useEffect(() => {
     if (user && !welcomeMessage) {
@@ -48,10 +54,26 @@ const Header = () => {
     }
   }, [user, welcomeMessage]);
 
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <AppBar position="sticky">
       <Container>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            py: 1,
+          }}
+        >
+          {/* Left: Logo + App Name */}
           <Box display="flex" alignItems="center">
             <img
               src="/notely.svg"
@@ -73,35 +95,91 @@ const Header = () => {
             </MuiLink>
           </Box>
 
-          {/* Right: Nav buttons */}
+          {/* Right: Authenticated User */}
           {user ? (
-            <Box sx={{ display: "flex", flexDirection: "row" }}>
+            <Box
+              sx={{
+                display: { xs: "none", sm: "flex" },
+                alignItems: "center",
+              }}
+            >
               {welcomeMessage && (
                 <Typography
                   variant="subtitle1"
-                  sx={{ mt: 1, color: "#E4C1F9" }}
+                  sx={{ color: "#E4C1F9", fontSize: "1rem" }}
                 >
                   {welcomeMessage}
                 </Typography>
               )}
             </Box>
           ) : (
-            <Box>
-              <Button color="secondary" component={RouterLink} to="/">
-                Home
-              </Button>
-              <Button color="secondary" component={RouterLink} to="/signin">
-                Sign In
-              </Button>
-              <Button
-                color="secondary"
-                component={RouterLink}
-                to="/signup"
-                variant="contained"
+            <>
+              {/* Desktop Nav */}
+              <Box
+                sx={{
+                  display: { xs: "none", sm: "flex" },
+                  gap: 1,
+                }}
               >
-                Sign Up
-              </Button>
-            </Box>
+                <Button color="secondary" component={RouterLink} to="/">
+                  Home
+                </Button>
+                <Button color="secondary" component={RouterLink} to="/signin">
+                  Sign In
+                </Button>
+                <Button
+                  color="secondary"
+                  component={RouterLink}
+                  to="/signup"
+                  variant="contained"
+                >
+                  Sign Up
+                </Button>
+              </Box>
+
+              {/* Mobile Menu Icon */}
+              <Box sx={{ display: { xs: "flex", sm: "none" } }}>
+                <IconButton color="inherit" edge="end" onClick={handleMenuOpen}>
+                  <MenuIcon />
+                </IconButton>
+
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleMenuClose}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                >
+                  <MenuItem
+                    component={RouterLink}
+                    to="/"
+                    onClick={handleMenuClose}
+                  >
+                    Home
+                  </MenuItem>
+                  <MenuItem
+                    component={RouterLink}
+                    to="/signin"
+                    onClick={handleMenuClose}
+                  >
+                    Sign In
+                  </MenuItem>
+                  <MenuItem
+                    component={RouterLink}
+                    to="/signup"
+                    onClick={handleMenuClose}
+                  >
+                    Sign Up
+                  </MenuItem>
+                </Menu>
+              </Box>
+            </>
           )}
         </Toolbar>
       </Container>

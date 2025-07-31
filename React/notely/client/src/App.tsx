@@ -17,6 +17,7 @@ import EditNote from "./pages/notes/EditNote";
 import Trash from "./pages/notes/Trash";
 import NoteDetails from "./pages/notes/NoteDetails";
 import Profile from "./pages/auth/Profile";
+import DashboardContent from "./pages/Dashboard/DashboardContent";
 
 function App() {
   return (
@@ -40,7 +41,8 @@ function App() {
             }
           >
             {/* Nested dashboard routes */}
-            <Route index element={<Navigate to="notes" replace />} />
+            <Route index element={<Navigate to="analysis" replace />} />
+            <Route path="analysis" element={<DashboardContent />} />
             <Route path="notes" element={<Notes />} />
             <Route path="create" element={<CreateNotes />} />
             <Route path="my-notes" element={<MyNotes />} />

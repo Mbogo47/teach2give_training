@@ -13,7 +13,7 @@ cloudinary.config({
 
 export const uploadImageToCloudinary = async (
   buffer: Buffer,
-  originalName: string
+  originalName: string,
 ): Promise<string> => {
   const tempPath = path.join(__dirname, `../../tmp-${originalName}`);
   await fs.promises.writeFile(tempPath, buffer);

@@ -4,12 +4,11 @@ import jwt from "jsonwebtoken";
 // import { uploadImageToAzure } from "../utils/azureUtils";
 import { uploadImageToCloudinary } from "../utils/cloudinaryUtils";
 
-
 const client = new PrismaClient();
 
 // HOME CONTROLLER
 export const Home = (_req: Request, res: Response) => {
-  res.send("Welcome to the Bloggy Server!");
+  res.sendStatus(200);
 };
 
 // CREATE NEW NOTE CONTROLLER

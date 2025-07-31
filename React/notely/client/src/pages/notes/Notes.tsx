@@ -12,7 +12,8 @@ import {
 import { toast } from "react-toastify";
 import { domain } from "../../components/utils/utils";
 import { Link } from "react-router-dom";
-import { Grid } from "react-loader-spinner";
+// import { Grid } from "react-loader-spinner";
+import CustomCardLoader from "../../components/loader/CustomLoader";
 
 interface Note {
   id: string;
@@ -42,19 +43,19 @@ const Notes: React.FC = () => {
   } = useQuery<Note[]>({ queryKey: ["notes"], queryFn: fetchNotes });
   if (isLoading) {
     return (
-      <Box mt={4} display="flex" justifyContent="center">
-        <Grid
-          visible={true}
-          height="200"
-          width="200"
-          color="#FBC4AB"
-          ariaLabel="grid-loading"
-          radius="15.5"
-          wrapperStyle={{}}
-          wrapperClass="grid-wrapper"
-        />
-        )
-      </Box>
+      // <Box mt={4} display="flex" justifyContent="center">
+      //   <Grid
+      //     visible={true}
+      //     height="200"
+      //     width="200"
+      //     color="#FBC4AB"
+      //     ariaLabel="grid-loading"
+      //     radius="15.5"
+      //     wrapperStyle={{}}
+      //     wrapperClass="grid-wrapper"
+      //   />
+      // </Box>
+      <CustomCardLoader />
     );
   }
 

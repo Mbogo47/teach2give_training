@@ -10,12 +10,17 @@ import {
   Button,
   Avatar,
   Divider,
+  useMediaQuery,
+  useTheme,
+  Fab,
 } from "@mui/material";
 import {
   NoteAdd,
   Notes,
   AssignmentInd,
   DeleteOutlineRounded,
+  BarChart,
+  Menu as MenuIcon,
 } from "@mui/icons-material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
@@ -29,9 +34,12 @@ const drawerWidth = 80;
 const DashboardLayout: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleLogoutClick = () => setLogoutDialogOpen(true);
   const handleLogoutConfirm = () => {
@@ -42,7 +50,10 @@ const DashboardLayout: React.FC = () => {
   };
   const handleLogoutCancel = () => setLogoutDialogOpen(false);
 
+  const toggleDrawer = () => setMobileOpen(!mobileOpen);
+
   const navItems = [
+    { to: "/dashboard/analysis", icon: <BarChart />, label: "Analysis" },
     { to: "/dashboard/notes", icon: <Notes />, label: "All Notes" },
     { to: "/dashboard/create", icon: <NoteAdd />, label: "Create Note" },
     { to: "/dashboard/my-notes", icon: <AssignmentInd />, label: "My Notes" },
@@ -53,10 +64,72 @@ const DashboardLayout: React.FC = () => {
     },
   ];
 
+  const drawerContent = (
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap={2}
+      alignItems="center"
+      pt={2}
+    >
+      {navItems.map((item) => (
+        <Tooltip title={item.label} placement="right" arrow key={item.to}>
+          <IconButton
+            component={NavLink}
+            to={item.to}
+            onClick={() => isMobile && toggleDrawer()}
+            sx={{
+              color: "inherit",
+              "&.active": {
+                color: "primary.main",
+              },
+            }}
+          >
+            {item.icon}
+          </IconButton>
+        </Tooltip>
+      ))}
+
+      <Tooltip title="Profile" placement="right" arrow>
+        <IconButton
+          onClick={() => {
+            navigate("/dashboard/profile");
+            if (isMobile) toggleDrawer();
+          }}
+        >
+          <Avatar
+            src={user?.avatarImage || undefined}
+            sx={{
+              color: !user?.avatarImage ? "secondary.main" : undefined,
+              border: !user?.avatarImage ? "2px solid" : undefined,
+              borderColor: !user?.avatarImage ? "primary.main" : undefined,
+              bgcolor: !user?.avatarImage ? "background.paper" : undefined,
+            }}
+          >
+            {!user?.avatarImage &&
+              `${user?.firstName?.[0] ?? ""}${
+                user?.lastName?.[0] ?? ""
+              }`.toUpperCase()}
+          </Avatar>
+        </IconButton>
+      </Tooltip>
+
+      <Tooltip title="Logout" placement="right" arrow>
+        <IconButton onClick={handleLogoutClick}>
+          <LogoutIcon />
+        </IconButton>
+      </Tooltip>
+    </Box>
+  );
+
   return (
     <Box sx={{ display: "flex" }}>
+      {/* Drawer */}
       <Drawer
-        variant="permanent"
+        variant={isMobile ? "temporary" : "permanent"}
+        open={isMobile ? mobileOpen : true}
+        onClose={toggleDrawer}
+        ModalProps={{ keepMounted: true }}
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -64,63 +137,36 @@ const DashboardLayout: React.FC = () => {
             width: drawerWidth,
             boxSizing: "border-box",
             alignItems: "center",
-            paddingTop: 2,
-            mt: 8,
+            mt: isMobile ? 0 : 8,
           },
         }}
       >
-        <Box display="flex" flexDirection="column" gap={2} alignItems="center">
-          {navItems.map((item) => (
-            <Tooltip title={item.label} placement="right" arrow key={item.to}>
-              <IconButton
-                component={NavLink}
-                to={item.to}
-                sx={{
-                  color: "inherit",
-                  "&.active": {
-                    color: "primary.main",
-                  },
-                }}
-              >
-                {item.icon}
-              </IconButton>
-            </Tooltip>
-          ))}
-
-          {/* Avatar -> navigates to /profile */}
-          <Tooltip title="Profile" placement="right" arrow>
-            <IconButton onClick={() => navigate("/dashboard/profile")}>
-              <Avatar
-                src={user?.avatarImage || undefined}
-                sx={{
-                  color: !user?.avatarImage ? "secondary.main" : undefined,
-                  border: !user?.avatarImage ? "2px solid" : undefined,
-                  borderColor: !user?.avatarImage ? "primary.main" : undefined,
-                  bgcolor: !user?.avatarImage ? "background.paper" : undefined,
-                }}
-              >
-                {!user?.avatarImage &&
-                  `${user?.firstName?.[0] ?? ""}${
-                    user?.lastName?.[0] ?? ""
-                  }`.toUpperCase()}
-              </Avatar>
-            </IconButton>
-          </Tooltip>
-
-          {/* Logout Icon */}
-          <Tooltip title="Logout" placement="right" arrow>
-            <IconButton onClick={handleLogoutClick}>
-              <LogoutIcon />
-            </IconButton>
-          </Tooltip>
-        </Box>
+        {drawerContent}
       </Drawer>
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      {/* Floating Menu Icon on Mobile */}
+      {isMobile && (
+        <Fab
+          size="medium"
+          color="primary"
+          onClick={toggleDrawer}
+          sx={{
+            position: "fixed",
+            top: 5,
+            right: 16,
+            zIndex: 1300,
+          }}
+        >
+          <MenuIcon />
+        </Fab>
+      )}
+
+      {/* Main Content */}
+      <Box component="main" sx={{ flexGrow: 1, p: { xs: 2, sm: 3 } }}>
         <Outlet />
       </Box>
 
-      {/* Logout Confirmation Dialog */}
+      {/* Logout Dialog */}
       <Dialog
         open={logoutDialogOpen}
         onClose={handleLogoutCancel}
