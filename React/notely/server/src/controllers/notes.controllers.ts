@@ -60,7 +60,7 @@ export const getAllNotes = async (
 ): Promise<void> => {
   try {
     const notes = await client.note.findMany({
-      where: { isDeleted: false },
+      where: { isDeleted: false, isPublic: true },
       include: {
         author: {
           select: {
@@ -261,3 +261,45 @@ export const softDeleteNote = async (
     res.status(500).json({ error: "Something went wrong" });
   }
 };
+
+//private notes
+export const makePrivateNote = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  try {
+    const noteId = req.params.id;
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) {
+      res.status(401).json({ error: "Missing token" });
+      return;
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      userId: string;
+    };
+
+    const existingNote = await client.note.findUnique({
+      where: { id: noteId },
+    });
+
+    if (!existingNote || existingNote.isDeleted) {
+      res.status(404).json({ error: "Note not found or has been deleted" });
+      return;
+    }
+    const privateNote = await client.note.update({
+      where: {
+        id: noteId,
+        authorId: decoded.userId,
+      },
+      data: {
+        isPublic: false,
+      },
+    });
+    res.status(200).json({ message: "Note Made Private", privateNote });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
