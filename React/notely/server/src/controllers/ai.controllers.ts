@@ -1,9 +1,12 @@
 import { Request, Response } from "express";
 import { OpenAI } from "openai";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
+const openai = new OpenAI({
+  apiKey: process.env.OPENROUTER_API_KEY,
+  baseURL: "https://openrouter.ai/api/v1",
+});
 
-export const generateNote =  async (req: Request, res: Response) => {
+export const generateNote = async (req: Request, res: Response) => {
   const { title, synopsis } = req.body;
 
   if (!title || !synopsis) {
@@ -12,7 +15,7 @@ export const generateNote =  async (req: Request, res: Response) => {
 
   try {
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo", 
+      model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
@@ -32,5 +35,3 @@ export const generateNote =  async (req: Request, res: Response) => {
     return res.status(500).json({ error: "Failed to generate note." });
   }
 };
-
-

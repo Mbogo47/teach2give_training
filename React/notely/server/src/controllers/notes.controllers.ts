@@ -302,4 +302,3 @@ export const makePrivateNote = async (
     res.status(500).json({ error: "Something went wrong" });
   }
 };
-

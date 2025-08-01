@@ -16,7 +16,7 @@ const upload = multer();
 const noteRouters = Router();
 
 noteRouters.get("/ping", Home);
-noteRouters.get("/generate", generateNote);
+noteRouters.post("/generate", generateNote);
 noteRouters.get("/notes", getAllNotes);
 noteRouters.post("/notes", upload.single("notesImage"), createNewNotes);
 noteRouters.post("/notes/public/:id", makePrivateNote);

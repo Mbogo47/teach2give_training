@@ -25,6 +25,8 @@ const CreateNotes: React.FC = () => {
   );
   const { title, synopsis, content, notesImage, loading } = state;
 
+  const [isPrivate, setIsPrivate] = useState(false);
+  // const [aiGenerating, setAiGenerating] = useState(false);
   const [previewHtml, setPreviewHtml] = useState("");
 
   useEffect(() => {
@@ -44,6 +46,42 @@ const CreateNotes: React.FC = () => {
     convertMarkdown();
   }, [content]);
 
+  // const handleGenerateAI = async () => {
+  //   if (!title || !synopsis) {
+  //     toast.error("Please enter both title and synopsis");
+  //     return;
+  //   }
+
+  //   setAiGenerating(true);
+  //   try {
+  //     const token = localStorage.getItem("token");
+
+  //     if (!token) {
+  //       toast.error("User not authenticated.");
+  //       return;
+  //     }
+
+  //     const response = await axios.post(
+  //       `${domain}/generate`,
+  //       { title, synopsis },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+
+  //     dispatch({ type: "SET_CONTENT", payload: response.data.markdown });
+  //     toast.success("AI-generated content loaded.");
+  //   } catch (error: any) {
+  //     console.error(error);
+  //     toast.error(
+  //       error.response?.data?.error || "Failed to generate note content."
+  //     );
+  //   } finally {
+  //     setAiGenerating(false);
+  //   }
+  // };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData();
@@ -62,11 +100,23 @@ const CreateNotes: React.FC = () => {
         return;
       }
 
-      await axios.post(`${domain}/notes`, formData, {
+      // 1. Create the note
+      const res = await axios.post(`${domain}/notes`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      const noteId = res.data.noteId || res.data.id;
+
+      // 2. Make note private if toggle is on
+      if (isPrivate) {
+        await axios.patch(`${domain}/notes/public/${noteId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      }
 
       toast.success("Note created successfully!");
       dispatch({ type: "RESET" });
@@ -82,7 +132,7 @@ const CreateNotes: React.FC = () => {
       {/* Form Section */}
       <Paper elevation={3} sx={{ padding: 4, flex: 1, minWidth: "50%" }}>
         <Typography variant="h5" gutterBottom>
-          Create a Blog
+          Create a Note
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit} noValidate>
@@ -120,26 +170,34 @@ const CreateNotes: React.FC = () => {
               disabled={loading}
             />
 
-            {/* <Button variant="contained" component="label" disabled={loading}>
-              Upload Notes Image
-              <input
-                type="file"
-                hidden
-                accept="image/*"
-                onChange={(e) =>
-                  dispatch({
-                    type: "SET_IMAGE",
-                    payload: e.target.files ? e.target.files[0] : null,
-                  })
-                }
-              />
-            </Button>
+            {/* TOGGLES */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              {/* Private toggle */}
+              <Button
+                variant={isPrivate ? "contained" : "outlined"}
+                color="secondary"
+                onClick={() => setIsPrivate(!isPrivate)}
+                disabled={loading}
+              >
+                {isPrivate ? "Private Note" : "Public Note"}
+              </Button>
 
-            {notesImage && (
-              <Typography variant="body2">
-                Selected: {notesImage.name}
-              </Typography>
-            )} */}
+              {/* AI Generate Button */}
+              {/* <Button
+                variant="outlined"
+                color="success"
+                onClick={handleGenerateAI}
+                disabled={loading || aiGenerating}
+              >
+                {aiGenerating ? "Generating..." : "Generate with AI"}
+              </Button> */}
+            </Box>
 
             <Button
               type="submit"
@@ -147,10 +205,10 @@ const CreateNotes: React.FC = () => {
               color="primary"
               disabled={loading}
               startIcon={
-                loading && <CircularProgress size={20} color="inherit" />
+                loading ? <CircularProgress size={20} color="inherit" /> : null
               }
             >
-              {loading ? "Submitting..." : "Submit Note"}
+              {loading ? "Creating..." : "Create Note"}
             </Button>
           </Stack>
         </Box>
@@ -175,4 +233,5 @@ const CreateNotes: React.FC = () => {
     </Box>
   );
 };
+
 export default CreateNotes;
